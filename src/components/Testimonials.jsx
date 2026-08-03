@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, MessageSquareQuote, Quote, ShieldCheck, Zap } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, MessageSquareQuote, Quote, Zap } from 'lucide-react';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,18 +66,18 @@ export default function Testimonials() {
   const active = reviews[currentIndex];
 
   return (
-    <section id="testimonials" className="section-padding" style={{ position: 'relative', zIndex: 1 }}>
+    <section id="testimonials" className="section-padding" style={{ position: 'relative', zIndex: 1, background: '#fafafa' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
             <MessageSquareQuote size={14} />
-            <span>VERIFIED CLIENT REVIEWS</span>
+            <span>CLIENT LOVE</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px' }}>
-            Trusted By <span className="gradient-text-cyan">Founders & Tech Leaders</span>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px' }}>
+            Client <span className="gradient-text-purple">Love</span>
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
             Discover how our full-stack engineering, 3D graphics, and AI automation transform real client businesses.
           </p>
         </div>
@@ -90,18 +90,19 @@ export default function Testimonials() {
               padding: '48px',
               borderRadius: '24px',
               position: 'relative',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
-              borderColor: 'rgba(0, 217, 255, 0.25)',
+              background: '#ffffff',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.04)',
             }}
           >
             {/* Quote Graphic */}
-            <div style={{ position: 'absolute', top: '24px', right: '32px', color: 'rgba(0, 217, 255, 0.12)' }}>
+            <div style={{ position: 'absolute', top: '24px', right: '32px', color: 'rgba(139, 92, 246, 0.1)' }}>
               <Quote size={80} />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '10px' }}>
               {/* Stars */}
-              <div style={{ display: 'flex', gap: '6px', color: '#ffb703' }}>
+              <div style={{ display: 'flex', gap: '6px', color: '#f59e0b' }}>
                 {[...Array(active.stars)].map((_, i) => (
                   <Star key={i} size={20} fill="currentColor" />
                 ))}
@@ -115,20 +116,31 @@ export default function Testimonials() {
                   gap: '6px',
                   padding: '6px 14px',
                   borderRadius: '20px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
                   color: '#10b981',
                   fontSize: '0.82rem',
                   fontWeight: 700,
                 }}
               >
                 <Zap size={14} />
-                <span>Verified Result: {active.metric}</span>
+                <span>Result: {active.metric}</span>
               </div>
             </div>
 
-            {/* Quote Text */}
-            <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', color: '#fff', lineHeight: 1.6, marginBottom: '32px', position: 'relative', zIndex: 1 }}>
+            {/* Elegant Serif Quote Text */}
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.2rem, 2.2vw, 1.45rem)',
+                color: '#1a1a1a',
+                lineHeight: 1.6,
+                marginBottom: '36px',
+                position: 'relative',
+                zIndex: 1,
+                fontStyle: 'italic',
+              }}
+            >
               "{active.quote}"
             </p>
 
@@ -140,8 +152,8 @@ export default function Testimonials() {
                     width: '54px',
                     height: '54px',
                     borderRadius: '50%',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '2px solid var(--accent-cyan)',
+                    background: 'rgba(139, 92, 246, 0.1)',
+                    border: '2px solid var(--accent-purple)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -151,12 +163,9 @@ export default function Testimonials() {
                   {active.avatar}
                 </div>
                 <div>
-                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff' }}>{active.author}</h4>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                    {active.role} • <span style={{ color: 'var(--accent-cyan)' }}>{active.company}</span>
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '2px' }}>
-                    Project: {active.project}
+                  <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#1a1a1a' }}>{active.author}</h4>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
+                    {active.role} • <span style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>{active.company}</span>
                   </div>
                 </div>
               </div>
@@ -179,25 +188,6 @@ export default function Testimonials() {
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Dots Indicator */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '24px' }}>
-            {reviews.map((r, i) => (
-              <button
-                key={r.id}
-                onClick={() => setCurrentIndex(i)}
-                style={{
-                  width: i === currentIndex ? '24px' : '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  background: i === currentIndex ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.2)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'var(--transition-smooth)',
-                }}
-              />
-            ))}
           </div>
         </div>
       </div>

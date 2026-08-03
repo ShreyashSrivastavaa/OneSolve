@@ -8,7 +8,7 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -23,9 +23,9 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
     { label: 'Services', href: '#services' },
     { label: 'AI Demos', href: '#demos' },
     { label: 'Work', href: '#portfolio' },
-    { label: 'Tech Stack', href: '#tech-stack' },
     { label: 'Process', href: '#process' },
-    { label: 'Why Us', href: '#capabilities' },
+    { label: 'Tech Stack', href: '#tech-stack' },
+    { label: 'Team', href: '#team' },
     { label: 'Reviews', href: '#testimonials' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -38,11 +38,12 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: isScrolled ? '12px 0' : '20px 0',
+        padding: isScrolled ? '14px 0' : '22px 0',
         transition: 'var(--transition-smooth)',
-        backgroundColor: isScrolled ? 'rgba(7, 9, 14, 0.85)' : 'transparent',
+        backgroundColor: isScrolled ? 'rgba(250, 250, 250, 0.88)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.06)' : 'none',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.03)' : 'none',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -50,59 +51,59 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #00d9ff 0%, #ff006e 100%)',
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 15px rgba(0, 217, 255, 0.4)',
+              boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
             }}
           >
-            <Sparkles size={22} color="#000" />
+            <Sparkles size={20} color="#fff" />
           </div>
           <div>
             <span
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 900,
-                fontSize: '1.4rem',
-                color: '#fff',
+                fontSize: '1.35rem',
+                color: '#1a1a1a',
                 letterSpacing: '-0.03em',
               }}
             >
-              One<span style={{ color: 'var(--accent-cyan)' }}>Solve</span>
+              One<span style={{ color: 'var(--accent-purple)' }}>Solve</span>
             </span>
-            <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
+            <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em', fontWeight: 700 }}>
               CREATIVE AGENCY
             </span>
           </div>
         </a>
 
-        {/* Desktop Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '24px' }} className="desktop-nav">
+        {/* Desktop Navigation Links */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '22px' }} className="desktop-nav">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               style={{
-                color: 'var(--text-muted)',
+                color: '#1a1a1a',
                 textDecoration: 'none',
-                fontWeight: 500,
-                fontSize: '0.92rem',
+                fontWeight: 600,
+                fontSize: '0.9rem',
                 transition: 'var(--transition-smooth)',
               }}
-              onMouseEnter={(e) => (e.target.style.color = 'var(--accent-cyan)')}
-              onMouseLeave={(e) => (e.target.style.color = 'var(--text-muted)')}
+              onMouseEnter={(e) => (e.target.style.color = 'var(--accent-purple)')}
+              onMouseLeave={(e) => (e.target.style.color = '#1a1a1a')}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        {/* Header Actions */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <AudioSynthesizer />
 
           {/* Cursor Toggle Button */}
@@ -110,9 +111,9 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
             onClick={() => setCursorEnabled(!cursorEnabled)}
             className="badge-pill cursor-pointer hidden-mobile"
             style={{
-              background: cursorEnabled ? 'rgba(255, 0, 110, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-              borderColor: cursorEnabled ? 'rgba(255, 0, 110, 0.4)' : 'rgba(255, 255, 255, 0.1)',
-              color: cursorEnabled ? '#ff006e' : '#94a3b8',
+              background: cursorEnabled ? 'rgba(139, 92, 246, 0.1)' : 'rgba(0, 0, 0, 0.04)',
+              borderColor: cursorEnabled ? 'rgba(139, 92, 246, 0.3)' : 'rgba(0, 0, 0, 0.08)',
+              color: cursorEnabled ? 'var(--accent-purple)' : '#666',
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
@@ -121,25 +122,29 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
             title="Toggle Custom Glowing Cursor"
           >
             <MousePointer size={14} />
-            <span style={{ fontSize: '0.78rem' }}>{cursorEnabled ? 'CURSOR ON' : 'CURSOR OFF'}</span>
+            <span style={{ fontSize: '0.75rem' }}>{cursorEnabled ? 'CURSOR ON' : 'CURSOR OFF'}</span>
           </button>
 
           {/* Start Project CTA */}
-          <a href="#contact" className="btn-primary desktop-nav" style={{ padding: '10px 20px', fontSize: '0.88rem' }}>
+          <a
+            href="#contact"
+            className="btn-primary desktop-nav"
+            style={{ padding: '10px 22px', fontSize: '0.85rem' }}
+          >
             <span>Start Project</span>
             <ArrowUpRight size={16} />
           </a>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-toggle"
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'rgba(0, 0, 0, 0.05)',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
               borderRadius: '10px',
               padding: '8px',
-              color: '#fff',
+              color: '#1a1a1a',
               cursor: 'pointer',
               display: 'none',
             }}
@@ -158,14 +163,14 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(7, 9, 14, 0.98)',
+            backgroundColor: 'rgba(250, 250, 250, 0.98)',
             backdropFilter: 'blur(20px)',
             zIndex: 999,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: '24px',
+            gap: '20px',
             padding: '40px',
           }}
         >
@@ -176,9 +181,9 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '1.6rem',
+                fontSize: '1.5rem',
                 fontWeight: 700,
-                color: 'var(--text-main)',
+                color: '#1a1a1a',
                 textDecoration: 'none',
               }}
             >

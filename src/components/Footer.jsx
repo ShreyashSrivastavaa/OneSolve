@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowUp, Send, CheckCircle2, Globe, Share2, ExternalLink, MessageSquare, Terminal, FileText } from 'lucide-react';
+import { Sparkles, ArrowUp, Send, CheckCircle2, Globe, Share2, ExternalLink, MessageSquare } from 'lucide-react';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -18,8 +18,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        background: '#04060b',
+        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
+        background: '#ffffff',
         paddingTop: '80px',
         paddingBottom: '40px',
         position: 'relative',
@@ -36,20 +36,21 @@ export default function Footer() {
                   width: '38px',
                   height: '38px',
                   borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #00d9ff 0%, #ff006e 100%)',
+                  background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
                 }}
               >
-                <Sparkles size={20} color="#000" />
+                <Sparkles size={20} color="#fff" />
               </div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4rem', color: '#fff' }}>
-                One<span style={{ color: 'var(--accent-cyan)' }}>Solve</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4rem', color: '#1a1a1a' }}>
+                One<span style={{ color: 'var(--accent-purple)' }}>Solve</span>
               </span>
             </a>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
-              Full-Stack Creative & AI Solutions Agency. We engineer bespoke web apps, 3D WebGL experiences, autonomous AI agents, and cloud automation platforms.
+              Minimalist WebGL & AI Solutions Agency. We engineer bespoke web apps, 3D experiences, autonomous AI agents, and cloud platforms.
             </p>
 
             {/* Social Icons */}
@@ -70,24 +71,14 @@ export default function Footer() {
                       width: '38px',
                       height: '38px',
                       borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: 'var(--text-muted)',
+                      background: '#f4f4f6',
+                      border: '1px solid rgba(0, 0, 0, 0.06)',
+                      color: '#1a1a1a',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       textDecoration: 'none',
                       transition: 'var(--transition-smooth)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--accent-cyan)';
-                      e.currentTarget.style.borderColor = 'var(--accent-cyan)';
-                      e.currentTarget.style.transform = 'translateY(-3px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--text-muted)';
-                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.transform = 'none';
                     }}
                   >
                     <Icon size={18} />
@@ -99,21 +90,20 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Quick Links</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Quick Links</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
               <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>About Squad</a>
-              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>10 Services</a>
-              <a href="#demos" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>AI & 3D Demos</a>
+              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
+              <a href="#demos" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>AI Demos</a>
               <a href="#portfolio" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Case Studies</a>
-              <a href="#tech-stack" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Tech Arsenal</a>
-              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>8-Step Process</a>
+              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Process</a>
               <a href="#contact" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Contact Us</a>
             </div>
           </div>
 
           {/* Resources */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Resources</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Resources</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
               <span>Documentation</span>
               <span>API Reference</span>
@@ -125,13 +115,13 @@ export default function Footer() {
 
           {/* Newsletter Form */}
           <div style={{ gridColumn: 'span 4' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Get AI & Tech Updates</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Get Tech Updates</h4>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '16px' }}>
-              Subscribe to our monthly tech journal on AI agents, 3D WebGL shaders, and web development innovations.
+              Subscribe to our monthly journal on AI agents, WebGL graphics, and web development innovations.
             </p>
 
             {subscribed ? (
-              <div style={{ color: 'var(--accent-cyan)', fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ color: 'var(--accent-purple)', fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
                 <CheckCircle2 size={16} />
                 <span>Subscribed! Welcome to the OneSolve journal.</span>
               </div>
@@ -145,16 +135,16 @@ export default function Footer() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   style={{
                     flex: 1,
-                    padding: '10px 14px',
+                    padding: '12px 16px',
                     borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#fff',
+                    background: '#f4f4f6',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
+                    color: '#1a1a1a',
                     outline: 'none',
                     fontSize: '0.88rem',
                   }}
                 />
-                <button type="submit" className="btn-primary" style={{ padding: '10px 16px' }}>
+                <button type="submit" className="btn-primary" style={{ padding: '12px 18px' }}>
                   <Send size={16} />
                 </button>
               </form>
@@ -165,7 +155,7 @@ export default function Footer() {
         {/* Bottom Copyright & Back to top */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+            borderTop: '1px solid rgba(0, 0, 0, 0.06)',
             paddingTop: '24px',
             display: 'flex',
             alignItems: 'center',
@@ -177,7 +167,7 @@ export default function Footer() {
           }}
         >
           <div>
-            © {new Date().getFullYear()} OneSolve Agency. Enterprise Creative & AI Solutions. All rights reserved.
+            © {new Date().getFullYear()} OneSolve Agency. All rights reserved.
           </div>
 
           <button

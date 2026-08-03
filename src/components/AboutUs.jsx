@@ -1,85 +1,73 @@
 import React from 'react';
-import { Users, Sparkles, Award, Globe, Code2, ShieldCheck, Zap, Bot } from 'lucide-react';
+import { Users, Award, Globe, Code2, ShieldCheck, Zap, Bot, Share2 } from 'lucide-react';
 
 export default function AboutUs() {
   const teamMembers = [
     {
       name: 'Shreyash Srivastava',
-      role: 'Founder & Lead Full-Stack Architect',
-      avatar: '⚡',
-      bio: 'High-impact full-stack engineer & AI system architect specializing in ultra-fast React/Next.js platforms, WebGL 3D graphics, scalable cloud microservices, and autonomous AI pipelines.',
-      skills: ['Full-Stack React/Next', 'AI & Agentic RAG', 'WebGL & Cloud Arch'],
-      color: '#00d9ff',
+      role: 'Founder & Full-Stack Architect',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      fallbackEmoji: '⚡',
+      bio: 'Architecting ultra-fast Next.js platforms, WebGL 3D graphics, and multi-agent AI pipelines.',
+      color: '#8b5cf6',
       github: 'https://github.com/ShreyashSrivastavaa',
       linkedin: 'https://linkedin.com/in/shreyashsrivastava',
     },
     {
       name: 'Deep Dama',
-      role: 'Lead Backend & Microservices Engineer',
-      avatar: '⚙️',
-      bio: 'Architecting high-throughput REST & GraphQL APIs, distributed database systems, real-time WebSockets, and resilient cloud microservices with sub-50ms latency.',
-      skills: ['Node.js & Python', 'PostgreSQL & Redis', 'Microservices & APIs'],
-      color: '#9d4edd',
+      role: 'Lead Backend & AI Engineer',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      fallbackEmoji: '⚙️',
+      bio: 'Architecting high-throughput REST/GraphQL APIs, vector databases, and real-time WebSockets.',
+      color: '#ec4899',
       github: '#',
       linkedin: '#',
     },
     {
       name: 'Alex Vance',
       role: 'Lead UX & Creative Director',
-      avatar: '🎨',
-      bio: 'Crafting visually arresting brand systems and high-converting UI frameworks for 8+ years.',
-      skills: ['Brand Identity', 'UI Architecture', 'Design Systems'],
-      color: '#ff006e',
-      github: '#',
-      linkedin: '#',
-    },
-    {
-      name: 'Elena Rostova',
-      role: '3D Artist & Motion Lead',
-      avatar: '🪐',
-      bio: 'Breathing life into static interfaces with Cinema4D, Blender, WebGL models, and fluid animations.',
-      skills: ['Blender / GLTF', 'Motion FX', '3D Sculpting'],
-      color: '#ffb703',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80',
+      fallbackEmoji: '🎨',
+      bio: 'Crafting visually arresting brand systems, design tokens, and high-converting UI frameworks.',
+      color: '#3b82f6',
       github: '#',
       linkedin: '#',
     },
   ];
 
   const stats = [
-    { val: '40+', label: 'Successful Projects', icon: Zap, color: '#00d9ff' },
-    { val: '30+', label: 'Happy Clients', icon: Users, color: '#ff006e' },
-    { val: '10+', label: 'Industries Served', icon: Globe, color: '#ffb703' },
+    { val: '40+', label: 'Projects Delivered', icon: Zap, color: '#8b5cf6' },
+    { val: '30+', label: 'Happy Clients', icon: Users, color: '#ec4899' },
+    { val: '10+', label: 'Industries Served', icon: Globe, color: '#f59e0b' },
     { val: '99.9%', label: 'Uptime Average', icon: ShieldCheck, color: '#10b981' },
-    { val: '50%', label: 'Avg Client Growth', icon: Award, color: '#9d4edd' },
-    { val: '12', label: 'Expert Team Members', icon: Code2, color: '#38bdf8' },
-    { val: 'Global', label: 'Client Presence', icon: Globe, color: '#ec4899' },
-    { val: '100+', label: 'AI Solutions Deployed', icon: Bot, color: '#a855f7' },
+    { val: '12', label: 'Expert Team Members', icon: Code2, color: '#06b6d4' },
   ];
 
   return (
-    <section id="about" className="section-padding" style={{ position: 'relative', zIndex: 1 }}>
+    <section id="about" className="section-padding" style={{ position: 'relative', zIndex: 1, background: '#fafafa' }}>
       <div className="container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 50px auto' }}>
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
             <Users size={14} />
-            <span>MEET THE ONESOLVE SQUAD</span>
+            <span>MEET THE TEAM</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px' }}>
-            A Collective of <span className="gradient-text-pink">Builders & AI Engineers</span>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px' }}>
+            The Minds Behind <span className="gradient-text-purple">OneSolve</span>
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            OneSolve was born from a shared passion for merging high-end design aesthetics with real-time 3D graphics and autonomous AI intelligence.
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
+            A collective of full-stack engineers, 3D artists, and AI architects building digital flagships.
           </p>
         </div>
 
-        {/* Team Squad Grid */}
+        {/* 3-Column Team Grid */}
         <div
+          id="team"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '24px',
-            marginBottom: '70px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '32px',
+            marginBottom: '80px',
           }}
         >
           {teamMembers.map((member) => (
@@ -87,86 +75,100 @@ export default function AboutUs() {
               key={member.name}
               className="glass-card team-card-3d"
               style={{
-                padding: '30px',
-                position: 'relative',
-                overflow: 'hidden',
+                padding: '36px 28px',
+                borderRadius: '24px',
+                textAlign: 'center',
+                background: '#ffffff',
+                border: '1px solid rgba(0, 0, 0, 0.06)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                transformStyle: 'preserve-3d',
+                alignItems: 'center',
               }}
             >
+              {/* Circular Avatar */}
               <div
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: member.color,
+                  width: '90px',
+                  height: '90px',
+                  borderRadius: '50%',
+                  background: `linear-gradient(135deg, ${member.color}20 0%, ${member.color}40 100%)`,
+                  border: `3px solid ${member.color}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2.5rem',
+                  marginBottom: '20px',
+                  boxShadow: `0 8px 25px ${member.color}30`,
                 }}
-              />
-              <div>
-                <div
+              >
+                {member.fallbackEmoji}
+              </div>
+
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '6px' }}>
+                {member.name}
+              </h3>
+              <div style={{ fontSize: '0.88rem', color: member.color, fontWeight: 700, marginBottom: '14px' }}>
+                {member.role}
+              </div>
+              <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.5 }}>
+                {member.bio}
+              </p>
+
+              {/* Social Icons */}
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <a
+                  href={member.github}
+                  target="_blank"
+                  rel="noreferrer"
                   style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '16px',
-                    background: `${member.color}15`,
-                    border: `1px solid ${member.color}40`,
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: '#f4f4f6',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1.8rem',
-                    marginBottom: '20px',
+                    color: '#1a1a1a',
+                    textDecoration: 'none',
                   }}
                 >
-                  {member.avatar}
-                </div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '6px' }}>{member.name}</h3>
-                <div style={{ fontSize: '0.85rem', color: member.color, fontWeight: 600, marginBottom: '14px' }}>
-                  {member.role}
-                </div>
-                <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.6 }}>
-                  {member.bio}
-                </p>
-              </div>
-
-              <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                  {member.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      style={{
-                        fontSize: '0.72rem',
-                        padding: '4px 10px',
-                        borderRadius: '20px',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        color: 'var(--text-muted)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                  <Globe size={16} />
+                </a>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: '#f4f4f6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#1a1a1a',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <Share2 size={16} />
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* PORTFOLIO STATS SECTION */}
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '30px' }}>
-            By The Numbers <span className="gradient-text-cyan">— Impact & Scale</span>
+        {/* STATISTICS SECTION ("By The Numbers") */}
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '36px', color: '#1a1a1a' }}>
+            By The <span className="gradient-text-purple">Numbers</span>
           </h3>
 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '20px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '24px',
             }}
           >
             {stats.map((st, i) => {
@@ -177,30 +179,35 @@ export default function AboutUs() {
                   key={i}
                   className="glass-card"
                   style={{
-                    padding: '24px',
-                    borderRadius: '16px',
+                    padding: '28px 20px',
+                    borderRadius: '20px',
                     textAlign: 'center',
-                    border: `1px solid ${st.color}30`,
-                    boxShadow: `0 0 20px ${st.color}15`,
+                    background: '#ffffff',
+                    border: `1px solid ${st.color}25`,
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
                   }}
                 >
                   <div
                     style={{
-                      width: '42px',
-                      height: '42px',
+                      width: '44px',
+                      height: '44px',
                       borderRadius: '12px',
-                      background: `${st.color}15`,
+                      background: `${st.color}12`,
                       color: st.color,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      margin: '0 auto 12px auto',
+                      margin: '0 auto 14px auto',
                     }}
                   >
                     <Icon size={22} />
                   </div>
-                  <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff' }}>{st.val}</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '4px' }}>{st.label}</div>
+                  <div style={{ fontSize: '2.8rem', fontWeight: 900, color: st.color, lineHeight: 1.1 }}>
+                    {st.val}
+                  </div>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '6px', fontWeight: 600 }}>
+                    {st.label}
+                  </div>
                 </div>
               );
             })}
