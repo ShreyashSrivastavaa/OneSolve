@@ -10,7 +10,7 @@ export default function Hero({ onSelectService }) {
         position: 'relative',
         width: '100%',
         height: '100vh',
-        minHeight: '700px',
+        minHeight: '720px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -25,17 +25,17 @@ export default function Hero({ onSelectService }) {
       <div
         style={{
           position: 'absolute',
-          top: '110px',
-          right: '30px',
+          top: '95px',
+          right: '24px',
           zIndex: 10,
           display: 'flex',
           alignItems: 'center',
-          gap: '12px',
-          padding: '10px 18px',
+          gap: '10px',
+          padding: '8px 16px',
           borderRadius: '30px',
-          background: 'rgba(18, 24, 40, 0.75)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(0, 217, 255, 0.25)',
+          background: 'rgba(10, 14, 39, 0.65)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(0, 217, 255, 0.3)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
         }}
         className="hidden-mobile"
@@ -43,47 +43,46 @@ export default function Hero({ onSelectService }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span
             style={{
-              width: '10px',
-              height: '10px',
+              width: '8px',
+              height: '8px',
               borderRadius: '50%',
               background: '#00ff41',
               boxShadow: '0 0 10px #00ff41',
               animation: 'pulse 1.8s infinite',
             }}
           />
-          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#fff' }}>Open for Projects</span>
+          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#fff' }}>Open for Projects</span>
         </div>
-        <div style={{ width: '1px', height: '16px', background: 'rgba(255, 255, 255, 0.15)' }} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>4 Engineers Online</span>
-        </div>
+        <div style={{ width: '1px', height: '14px', background: 'rgba(255, 255, 255, 0.15)' }} />
+        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>4 Engineers Online</span>
       </div>
 
-      {/* Main Glassmorphic Hero Overlay Box */}
+      {/* Main Glassmorphic Hero Overlay Content */}
       <div
         className="container"
         style={{
           position: 'relative',
           zIndex: 5,
           textAlign: 'center',
-          maxWidth: '900px',
+          maxWidth: '850px',
           pointerEvents: 'none',
+          paddingTop: '60px',
         }}
       >
         <div
           style={{
             pointerEvents: 'auto',
-            padding: '40px 30px',
-            borderRadius: '28px',
-            background: 'rgba(10, 14, 39, 0.55)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+            padding: '32px 28px',
+            borderRadius: '24px',
+            background: 'rgba(10, 14, 39, 0.35)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
           }}
         >
           {/* Top Tagline Pill */}
-          <div style={{ display: 'inline-block', marginBottom: '20px' }}>
-            <div className="badge-pill" style={{ padding: '8px 20px', fontSize: '0.85rem' }}>
+          <div style={{ display: 'inline-block', marginBottom: '16px' }}>
+            <div className="badge-pill" style={{ padding: '6px 18px', fontSize: '0.8rem' }}>
               <Sparkles size={14} className="text-cyan-400" />
               <span>INTERACTIVE 3D DIGITAL WORKSPACE AGENCY</span>
             </div>
@@ -92,13 +91,13 @@ export default function Hero({ onSelectService }) {
           {/* Main Floating Headline */}
           <h1
             style={{
-              fontSize: 'clamp(2.8rem, 6vw, 5.2rem)',
+              fontSize: 'clamp(2.4rem, 5.2vw, 4.6rem)',
               fontWeight: 900,
-              lineHeight: 1.05,
-              marginBottom: '20px',
+              lineHeight: 1.08,
+              marginBottom: '16px',
               letterSpacing: '-0.02em',
               color: '#fff',
-              textShadow: '0 0 30px rgba(0, 217, 255, 0.3)',
+              textShadow: '0 0 35px rgba(0, 217, 255, 0.4), 0 0 10px rgba(0,0,0,0.8)',
             }}
           >
             OneSolve <br />
@@ -108,13 +107,14 @@ export default function Hero({ onSelectService }) {
           {/* Vision Tagline */}
           <p
             style={{
-              fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)',
-              color: 'var(--text-main)',
-              maxWidth: '750px',
-              margin: '0 auto 32px auto',
+              fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+              color: '#f8fafc',
+              maxWidth: '700px',
+              margin: '0 auto 28px auto',
               fontWeight: 600,
               letterSpacing: '0.01em',
-              lineHeight: 1.5,
+              lineHeight: 1.4,
+              textShadow: '0 2px 10px rgba(0,0,0,0.8)',
             }}
           >
             Build in 3D <span style={{ color: 'var(--accent-cyan)' }}>•</span> Think in AI <span style={{ color: 'var(--accent-pink)' }}>•</span> Scale Infinitely
@@ -125,35 +125,35 @@ export default function Hero({ onSelectService }) {
             style={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: '16px',
+              gap: '14px',
               justifyContent: 'center',
-              marginBottom: '32px',
+              marginBottom: '24px',
             }}
           >
             <a
               href="#contact"
               className="btn-primary"
               style={{
-                padding: '16px 36px',
-                fontSize: '1.05rem',
-                boxShadow: '0 0 25px rgba(0, 217, 255, 0.4)',
+                padding: '14px 32px',
+                fontSize: '1rem',
+                boxShadow: '0 0 25px rgba(0, 217, 255, 0.5)',
               }}
             >
               <span>Start Your Project</span>
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </a>
             <a
               href="#portfolio"
               className="btn-secondary"
               style={{
-                padding: '16px 36px',
-                fontSize: '1.05rem',
+                padding: '14px 32px',
+                fontSize: '1rem',
                 borderColor: 'rgba(255, 0, 110, 0.5)',
                 color: '#fff',
-                background: 'rgba(255, 0, 110, 0.1)',
+                background: 'rgba(255, 0, 110, 0.15)',
               }}
             >
-              <Play size={18} fill="currentColor" color="var(--accent-pink)" />
+              <Play size={16} fill="currentColor" color="var(--accent-pink)" />
               <span>View Portfolio</span>
             </a>
           </div>
@@ -163,17 +163,18 @@ export default function Hero({ onSelectService }) {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '10px',
-              padding: '8px 18px',
+              gap: '8px',
+              padding: '6px 16px',
               borderRadius: '20px',
-              background: 'rgba(0, 217, 255, 0.1)',
-              border: '1px solid rgba(0, 217, 255, 0.25)',
-              fontSize: '0.8rem',
+              background: 'rgba(0, 217, 255, 0.12)',
+              border: '1px solid rgba(0, 217, 255, 0.3)',
+              fontSize: '0.78rem',
               color: 'var(--accent-cyan)',
               fontWeight: 600,
+              backdropFilter: 'blur(8px)',
             }}
           >
-            <Navigation size={14} />
+            <Navigation size={13} />
             <span>Mouse: Parallax | Scroll: Zoom | WASD: Pan 3D Space | Click Objects to Explore</span>
           </div>
         </div>
