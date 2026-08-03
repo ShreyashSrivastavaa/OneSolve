@@ -17,9 +17,12 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-export default function Services() {
+export default function Services({ selectedServiceId = 0, setSelectedServiceId }) {
   const [activeGroup, setActiveGroup] = useState('all');
-  const [activeServiceId, setActiveServiceId] = useState(0);
+  const activeServiceId = selectedServiceId;
+  const setActiveServiceId = (id) => {
+    if (setSelectedServiceId) setSelectedServiceId(id);
+  };
 
   const groups = [
     { id: 'all', label: 'All 11 Services' },

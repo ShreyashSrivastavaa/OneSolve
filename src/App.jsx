@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [cursorEnabled, setCursorEnabled] = useState(true);
+  const [selectedServiceId, setSelectedServiceId] = useState(0);
 
   return (
     <div style={{ position: 'relative', overflowX: 'hidden' }}>
@@ -28,9 +29,9 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        <Hero />
+        <Hero onSelectService={setSelectedServiceId} />
         <AboutUs />
-        <Services />
+        <Services selectedServiceId={selectedServiceId} setSelectedServiceId={setSelectedServiceId} />
         <InteractiveDemos />
         <Portfolio />
         <TechArsenal />

@@ -1,231 +1,190 @@
 import React from 'react';
-import { ArrowRight, Play, Sparkles, ChevronDown, Award, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Play, Sparkles, Navigation, ShieldCheck, Zap, Award } from 'lucide-react';
 import ThreeCanvas from './ThreeCanvas';
 
-export default function Hero() {
+export default function Hero({ onSelectService }) {
   return (
     <section
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        width: '100%',
+        height: '100vh',
+        minHeight: '700px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '100px',
         overflow: 'hidden',
+        background: '#0a0e27',
       }}
     >
-      {/* Three.js Background */}
-      <ThreeCanvas />
+      {/* 3D Interactive Workspace Canvas */}
+      <ThreeCanvas onSelectService={onSelectService} />
 
-      {/* Code Snippet Background Overlay */}
+      {/* Real-time Status Floating Panel (Top-Right) */}
       <div
-        className="code-snippet-overlay hidden-mobile"
         style={{
           position: 'absolute',
-          top: '15%',
-          left: '5%',
-          fontSize: '0.75rem',
-          color: 'rgba(0, 217, 255, 0.25)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          whiteSpace: 'pre',
-          textAlign: 'left',
-          lineHeight: 1.5,
+          top: '110px',
+          right: '30px',
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          padding: '10px 18px',
+          borderRadius: '30px',
+          background: 'rgba(18, 24, 40, 0.75)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(0, 217, 255, 0.25)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
         }}
+        className="hidden-mobile"
       >
-        {`const agency = new OneSolveAgency({
-  capabilities: ["Web", "AI", "3D", "Cloud"],
-  intelligence: "Agentic RAG & MCP",
-  performance: "Lighthouse 99+"
-});
-await agency.transformBusiness();`}
-      </div>
-
-      <div
-        className="code-snippet-overlay hidden-mobile"
-        style={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '5%',
-          fontSize: '0.75rem',
-          color: 'rgba(255, 0, 110, 0.25)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          whiteSpace: 'pre',
-          textAlign: 'left',
-          lineHeight: 1.5,
-        }}
-      >
-        {`function optimizeFlow(nodes) {
-  return nodes.map(node => ({
-    ...node,
-    aiPowered: true,
-    status: 'ACTIVE'
-  }));
-}`}
-      </div>
-
-      {/* Glow Orbs Background */}
-      <div className="glow-orb-cyan" style={{ top: '20%', left: '10%' }} />
-      <div className="glow-orb-pink" style={{ bottom: '15%', right: '10%' }} />
-
-      <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        {/* Top Tagline Pill */}
-        <div style={{ display: 'inline-block', marginBottom: '20px' }}>
-          <div className="badge-pill" style={{ padding: '8px 20px', fontSize: '0.85rem' }}>
-            <Sparkles size={14} className="text-cyan-400" />
-            <span>FULL-STACK CREATIVE & AI SOLUTIONS AGENCY</span>
-          </div>
-        </div>
-
-        {/* Hero Headline */}
-        <h1
-          style={{
-            fontSize: 'clamp(2.5rem, 5.5vw, 4.8rem)',
-            fontWeight: 900,
-            lineHeight: 1.08,
-            marginBottom: '24px',
-            textTransform: 'none',
-            letterSpacing: '-0.02em',
-          }}
-        >
-          OneSolve <span style={{ color: 'var(--text-muted)' }}>—</span> <br />
-          Where <span className="gradient-text-cyan">Creativity</span> Meets <span className="gradient-text-pink">Intelligence</span>
-        </h1>
-
-        {/* Sub-headline / Tagline */}
-        <p
-          style={{
-            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-            color: 'var(--text-muted)',
-            maxWidth: '850px',
-            margin: '0 auto 36px auto',
-            fontWeight: 500,
-            letterSpacing: '0.02em',
-          }}
-        >
-          Web <span style={{ color: 'var(--accent-pink)' }}>•</span> AI <span style={{ color: 'var(--accent-cyan)' }}>•</span> 3D <span style={{ color: 'var(--accent-gold)' }}>•</span> Design <span style={{ color: 'var(--accent-indigo)' }}>•</span> Automation <span style={{ color: 'var(--accent-pink)' }}>•</span> Cloud <span style={{ color: 'var(--accent-cyan)' }}>•</span> Growth
-        </p>
-
-        {/* CTA Buttons */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', marginBottom: '60px' }}>
-          <a href="#contact" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1.05rem' }}>
-            <span>Start Your Project</span>
-            <ArrowRight size={20} />
-          </a>
-          <a
-            href="#portfolio"
-            className="btn-secondary"
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span
             style={{
-              padding: '16px 36px',
-              fontSize: '1.05rem',
-              borderColor: 'rgba(255, 0, 110, 0.4)',
-              color: '#fff',
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              background: '#00ff41',
+              boxShadow: '0 0 10px #00ff41',
+              animation: 'pulse 1.8s infinite',
             }}
-          >
-            <Play size={18} fill="currentColor" color="var(--accent-pink)" />
-            <span>View Our Work</span>
-          </a>
+          />
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#fff' }}>Open for Projects</span>
         </div>
+        <div style={{ width: '1px', height: '16px', background: 'rgba(255, 255, 255, 0.15)' }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>4 Engineers Online</span>
+        </div>
+      </div>
 
-        {/* Live Metrics Ticker Bar */}
+      {/* Main Glassmorphic Hero Overlay Box */}
+      <div
+        className="container"
+        style={{
+          position: 'relative',
+          zIndex: 5,
+          textAlign: 'center',
+          maxWidth: '900px',
+          pointerEvents: 'none',
+        }}
+      >
         <div
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '30px',
-            padding: '20px 30px',
-            maxWidth: '960px',
-            margin: '0 auto',
-            borderRadius: '20px',
-            background: 'rgba(18, 24, 40, 0.65)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            pointerEvents: 'auto',
+            padding: '40px 30px',
+            borderRadius: '28px',
+            background: 'rgba(10, 14, 39, 0.55)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ padding: '10px', borderRadius: '12px', background: 'rgba(0, 217, 255, 0.1)', color: 'var(--accent-cyan)' }}>
-              <Zap size={20} />
-            </div>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff' }}>40+</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Enterprise Projects</div>
+          {/* Top Tagline Pill */}
+          <div style={{ display: 'inline-block', marginBottom: '20px' }}>
+            <div className="badge-pill" style={{ padding: '8px 20px', fontSize: '0.85rem' }}>
+              <Sparkles size={14} className="text-cyan-400" />
+              <span>INTERACTIVE 3D DIGITAL WORKSPACE AGENCY</span>
             </div>
           </div>
 
-          <div style={{ width: '1px', background: 'rgba(255, 255, 255, 0.1)' }} />
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ padding: '10px', borderRadius: '12px', background: 'rgba(255, 0, 110, 0.1)', color: 'var(--accent-pink)' }}>
-              <ShieldCheck size={20} />
-            </div>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff' }}>100+</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>AI Workflows Deployed</div>
-            </div>
-          </div>
-
-          <div style={{ width: '1px', background: 'rgba(255, 255, 255, 0.1)' }} />
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ padding: '10px', borderRadius: '12px', background: 'rgba(255, 183, 3, 0.1)', color: 'var(--accent-gold)' }}>
-              <Award size={20} />
-            </div>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff' }}>99.9%</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>System Uptime</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <a
-          href="#services"
-          style={{
-            display: 'inline-flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-            color: 'var(--text-muted)',
-            textDecoration: 'none',
-            marginTop: '40px',
-            fontSize: '0.8rem',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-          }}
-        >
-          <span>Scroll To Explore</span>
-          <div
+          {/* Main Floating Headline */}
+          <h1
             style={{
-              width: '24px',
-              height: '40px',
-              borderRadius: '20px',
-              border: '2px solid rgba(255, 255, 255, 0.2)',
-              display: 'flex',
-              justifyContent: 'center',
-              paddingTop: '6px',
+              fontSize: 'clamp(2.8rem, 6vw, 5.2rem)',
+              fontWeight: 900,
+              lineHeight: 1.05,
+              marginBottom: '20px',
+              letterSpacing: '-0.02em',
+              color: '#fff',
+              textShadow: '0 0 30px rgba(0, 217, 255, 0.3)',
             }}
           >
-            <div
+            OneSolve <br />
+            <span className="gradient-text-cyan">3D Workspace</span> & <span className="gradient-text-pink">AI Studio</span>
+          </h1>
+
+          {/* Vision Tagline */}
+          <p
+            style={{
+              fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)',
+              color: 'var(--text-main)',
+              maxWidth: '750px',
+              margin: '0 auto 32px auto',
+              fontWeight: 600,
+              letterSpacing: '0.01em',
+              lineHeight: 1.5,
+            }}
+          >
+            Build in 3D <span style={{ color: 'var(--accent-cyan)' }}>•</span> Think in AI <span style={{ color: 'var(--accent-pink)' }}>•</span> Scale Infinitely
+          </p>
+
+          {/* Action CTAs */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '16px',
+              justifyContent: 'center',
+              marginBottom: '32px',
+            }}
+          >
+            <a
+              href="#contact"
+              className="btn-primary"
               style={{
-                width: '4px',
-                height: '8px',
-                borderRadius: '2px',
-                background: 'var(--accent-cyan)',
-                animation: 'bounce 1.5s infinite',
+                padding: '16px 36px',
+                fontSize: '1.05rem',
+                boxShadow: '0 0 25px rgba(0, 217, 255, 0.4)',
               }}
-            />
+            >
+              <span>Start Your Project</span>
+              <ArrowRight size={20} />
+            </a>
+            <a
+              href="#portfolio"
+              className="btn-secondary"
+              style={{
+                padding: '16px 36px',
+                fontSize: '1.05rem',
+                borderColor: 'rgba(255, 0, 110, 0.5)',
+                color: '#fff',
+                background: 'rgba(255, 0, 110, 0.1)',
+              }}
+            >
+              <Play size={18} fill="currentColor" color="var(--accent-pink)" />
+              <span>View Portfolio</span>
+            </a>
           </div>
-        </a>
+
+          {/* 3D Navigation Controls Hint Bar */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '8px 18px',
+              borderRadius: '20px',
+              background: 'rgba(0, 217, 255, 0.1)',
+              border: '1px solid rgba(0, 217, 255, 0.25)',
+              fontSize: '0.8rem',
+              color: 'var(--accent-cyan)',
+              fontWeight: 600,
+            }}
+          >
+            <Navigation size={14} />
+            <span>Mouse: Parallax | Scroll: Zoom | WASD: Pan 3D Space | Click Objects to Explore</span>
+          </div>
+        </div>
       </div>
 
+      {/* Pulse Keyframe Animation */}
       <style>{`
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(10px); }
+        @keyframes pulse {
+          0% { transform: scale(0.95); opacity: 0.8; }
+          50% { transform: scale(1.15); opacity: 1; }
+          100% { transform: scale(0.95); opacity: 0.8; }
         }
       `}</style>
     </section>

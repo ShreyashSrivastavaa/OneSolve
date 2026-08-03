@@ -85,7 +85,7 @@ export default function AboutUs() {
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="glass-card"
+              className="glass-card team-card-3d"
               style={{
                 padding: '30px',
                 position: 'relative',
@@ -93,6 +93,8 @@ export default function AboutUs() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                transformStyle: 'preserve-3d',
               }}
             >
               <div
