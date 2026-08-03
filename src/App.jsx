@@ -4,12 +4,15 @@ import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
-import ThreePlayground from './components/ThreePlayground';
+import InteractiveDemos from './components/InteractiveDemos';
 import Portfolio from './components/Portfolio';
+import TechArsenal from './components/TechArsenal';
 import WorkflowProcess from './components/WorkflowProcess';
+import Capabilities from './components/Capabilities';
 import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
+import StickyCTA from './components/StickyCTA';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -28,13 +31,18 @@ export default function App() {
         <Hero />
         <AboutUs />
         <Services />
-        <ThreePlayground />
+        <InteractiveDemos />
         <Portfolio />
+        <TechArsenal />
         <WorkflowProcess />
+        <Capabilities />
         <Testimonials />
         <CTASection />
         <ContactSection />
       </main>
+
+      {/* Persistent Floating Bottom Consultation CTA */}
+      <StickyCTA />
 
       {/* Footer */}
       <Footer />

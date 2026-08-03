@@ -1,32 +1,56 @@
 import React, { useState } from 'react';
-import { Mail, Send, CheckCircle2, MapPin, Phone, Copy, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Send, CheckCircle2, MapPin, Phone, Copy, Calendar, Sparkles, Sliders } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
     email: '',
-    service: 'Web Design & Dev',
-    budget: '$5k - $10k',
+    phone: '',
     message: '',
   });
 
+  // Multi-select Services state
+  const [selectedServices, setSelectedServices] = useState(['Web Design & Dev', 'AI Solutions']);
+
+  // Budget slider state (min $5k, max $100k+)
+  const [budgetValue, setBudgetValue] = useState(25000);
+
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [showCalendlyModal, setShowCalendlyModal] = useState(false);
 
-  const services = ['Web Design & Dev', '3D Animation & Motion', 'Brand Identity', 'UI/UX Design'];
-  const budgets = ['< $5k', '$5k - $10k', '$10k - $25k', '$25k+'];
+  const availableServices = [
+    'Web Design & Dev',
+    'AI Solutions & Automation',
+    'Agentic AI & RAG Systems',
+    '3D Web Experiences',
+    'UI/UX Design',
+    'Cloud & DevOps',
+    'Brand Identity',
+    'Business Process Automation',
+    'Maintenance & Growth',
+  ];
+
+  const toggleService = (srv) => {
+    if (selectedServices.includes(srv)) {
+      setSelectedServices(selectedServices.filter((s) => s !== srv));
+    } else {
+      setSelectedServices([...selectedServices, srv]);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
-    // Trigger Confetti Party Explosion
+    // Trigger Confetti Celebration
     confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 120,
+      spread: 80,
       origin: { y: 0.6 },
-      colors: ['#00d9ff', '#ff006e', '#ffb703'],
+      colors: ['#00d9ff', '#ff006e', '#ffb703', '#9d4edd'],
     });
 
     setSubmitted(true);
@@ -38,24 +62,27 @@ export default function ContactSection() {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
+  const formattedBudget =
+    budgetValue >= 100000 ? '$100,000+' : `$${budgetValue.toLocaleString()}`;
+
   return (
     <section id="contact" className="section-padding" style={{ position: 'relative', zIndex: 1 }}>
       <div className="container">
         {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 60px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
             <Mail size={14} />
-            <span>GET IN TOUCH</span>
+            <span>LET'S BUILD SOMETHING INCREDIBLE</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, marginBottom: '20px' }}>
-            Let's Build Something <span className="gradient-text-pink">Extraordinary</span>
+            Start Your <span className="gradient-text-pink">Transformation</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-            Have a project in mind? Fill out the form below or drop us an email to kickstart your digital experience.
+            Have an ambitious web, 3D, or AI project? Fill out our interactive scope inquiry form or schedule a direct consultation call.
           </p>
         </div>
 
-        {/* Layout: Form on Left, Contact Details on Right */}
+        {/* Layout: Form + Info Panel */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '36px', alignItems: 'start' }}>
           {/* Left Form */}
           <div style={{ gridColumn: 'span 7' }} className="contact-form-col">
@@ -79,26 +106,27 @@ export default function ContactSection() {
                     <CheckCircle2 size={36} />
                   </div>
                   <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', marginBottom: '12px' }}>
-                    Project Request Transmitted!
+                    Proposal Request Received!
                   </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '450px', margin: '0 auto 24px auto' }}>
-                    Thank you, <span style={{ color: '#fff', fontWeight: 700 }}>{formData.name}</span>. Our team at OneSolve will review your request and get back to you within 24 hours.
+                  <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto 24px auto' }}>
+                    Thank you, <span style={{ color: '#fff', fontWeight: 700 }}>{formData.name}</span>. Our lead architect will review your project scope (<span style={{ color: 'var(--accent-cyan)' }}>{formattedBudget}</span>) and respond within 24 hours.
                   </p>
                   <button onClick={() => setSubmitted(false)} className="btn-secondary">
-                    Send Another Inquiry
+                    Send Another Request
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  {/* Name & Company */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-row">
                     <div>
                       <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
-                        Your Name *
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="John Doe"
+                        placeholder="Sarah Jenkins"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         style={{
@@ -116,14 +144,13 @@ export default function ContactSection() {
 
                     <div>
                       <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
-                        Your Email *
+                        Company Name
                       </label>
                       <input
-                        type="email"
-                        required
-                        placeholder="john@company.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        type="text"
+                        placeholder="Apex Technologies"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         style={{
                           width: '100%',
                           padding: '14px 18px',
@@ -138,72 +165,124 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* Service Pills */}
-                  <div>
-                    <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '10px' }}>
-                      Select Primary Service
-                    </label>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                      {services.map((srv) => (
-                        <button
-                          type="button"
-                          key={srv}
-                          onClick={() => setFormData({ ...formData, service: srv })}
-                          style={{
-                            padding: '8px 16px',
-                            borderRadius: '20px',
-                            fontSize: '0.82rem',
-                            fontWeight: 600,
-                            border: '1px solid',
-                            borderColor: formData.service === srv ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.1)',
-                            background: formData.service === srv ? 'rgba(0, 217, 255, 0.15)' : 'rgba(255, 255, 255, 0.03)',
-                            color: formData.service === srv ? '#fff' : 'var(--text-muted)',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {srv}
-                        </button>
-                      ))}
+                  {/* Email & Phone */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-row">
+                    <div>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="sarah@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: '12px',
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          color: '#fff',
+                          outline: 'none',
+                          fontSize: '0.95rem',
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
+                        Phone / WhatsApp
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 019-2834"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: '12px',
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          color: '#fff',
+                          outline: 'none',
+                          fontSize: '0.95rem',
+                        }}
+                      />
                     </div>
                   </div>
 
-                  {/* Budget Pills */}
+                  {/* Multi-Select Services Pills */}
                   <div>
                     <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '10px' }}>
-                      Estimated Budget Range
+                      Services Interested In (Multi-Select):
                     </label>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                      {budgets.map((b) => (
-                        <button
-                          type="button"
-                          key={b}
-                          onClick={() => setFormData({ ...formData, budget: b })}
-                          style={{
-                            padding: '8px 16px',
-                            borderRadius: '20px',
-                            fontSize: '0.82rem',
-                            fontWeight: 600,
-                            border: '1px solid',
-                            borderColor: formData.budget === b ? 'var(--accent-pink)' : 'rgba(255, 255, 255, 0.1)',
-                            background: formData.budget === b ? 'rgba(255, 0, 110, 0.15)' : 'rgba(255, 255, 255, 0.03)',
-                            color: formData.budget === b ? '#fff' : 'var(--text-muted)',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {b}
-                        </button>
-                      ))}
+                      {availableServices.map((srv) => {
+                        const isSelected = selectedServices.includes(srv);
+
+                        return (
+                          <button
+                            type="button"
+                            key={srv}
+                            onClick={() => toggleService(srv)}
+                            style={{
+                              padding: '8px 14px',
+                              borderRadius: '20px',
+                              fontSize: '0.8rem',
+                              fontWeight: 600,
+                              border: '1px solid',
+                              borderColor: isSelected ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.1)',
+                              background: isSelected ? 'rgba(0, 217, 255, 0.18)' : 'rgba(255, 255, 255, 0.03)',
+                              color: isSelected ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                              cursor: 'pointer',
+                              transition: 'var(--transition-smooth)',
+                            }}
+                          >
+                            {isSelected ? '✓ ' : '+ '} {srv}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
+                  {/* Interactive Budget Range Slider */}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+                        Project Budget Range:
+                      </label>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-pink)' }}>
+                        {formattedBudget}
+                      </span>
+                    </div>
+
+                    <input
+                      type="range"
+                      min="5000"
+                      max="100000"
+                      step="5000"
+                      value={budgetValue}
+                      onChange={(e) => setBudgetValue(Number(e.target.value))}
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: '6px' }}>
+                      <span>$5,000</span>
+                      <span>$25,000</span>
+                      <span>$50,000</span>
+                      <span>$100,000+</span>
+                    </div>
+                  </div>
+
+                  {/* Project Details */}
                   <div>
                     <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
-                      Project Overview / Goals *
+                      Project Details & Objectives *
                     </label>
                     <textarea
                       required
                       rows={4}
-                      placeholder="Tell us about your project goals, timelines, and visual vision..."
+                      placeholder="Describe your vision, target launch date, and key features..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       style={{
@@ -229,34 +308,65 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Direct Info */}
+          {/* Right Direct Info & Calendly Embed */}
           <div style={{ gridColumn: 'span 5' }} className="contact-info-col">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div className="glass-card" style={{ padding: '30px', borderRadius: '20px' }}>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* Call Booking Card */}
+              <div
+                className="glass-card"
+                style={{
+                  padding: '30px',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(255, 0, 110, 0.3)',
+                  boxShadow: '0 0 30px rgba(255, 0, 110, 0.15)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+                  <Calendar size={24} color="var(--accent-pink)" />
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff' }}>
+                    Book a 15-Min Discovery Call
+                  </h4>
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.5 }}>
+                  Prefer a live video conversation? Speak directly with our lead architect to discuss scope and timelines.
+                </p>
+                <button
+                  onClick={() => setShowCalendlyModal(true)}
+                  className="btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #ff006e 0%, #9d4edd 100%)', boxShadow: '0 0 20px rgba(255, 0, 110, 0.4)' }}
+                >
+                  <Calendar size={18} />
+                  <span>Schedule Consultation</span>
+                </button>
+              </div>
+
+              {/* Direct Email Card */}
+              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>
                   Direct Email Contact
                 </h4>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                  <span style={{ fontSize: '0.95rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>hello@onesolve.agency</span>
-                  <button onClick={copyEmail} className="btn-secondary" style={{ padding: '6px 12px', fontSize: '0.78rem' }}>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>hello@onesolve.agency</span>
+                  <button onClick={copyEmail} className="btn-secondary" style={{ padding: '6px 12px', fontSize: '0.75rem' }}>
                     {copiedEmail ? <CheckCircle2 size={14} /> : <Copy size={14} />}
                     <span>{copiedEmail ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
               </div>
 
-              <div className="glass-card" style={{ padding: '30px', borderRadius: '20px' }}>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>
-                  Studio Location & Hours
+              {/* Location & Hours */}
+              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', marginBottom: '14px' }}>
+                  Response Time Guarantee
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--text-muted)', fontSize: '0.92rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: 'var(--text-muted)', fontSize: '0.88rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <MapPin size={18} className="text-pink-400" />
-                    <span>Creative Studio Hub, San Francisco / Remote Worldwide</span>
+                    <CheckCircle2 size={16} color="#10b981" />
+                    <span>Inquiries Answered Within 24 Hours</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Phone size={18} className="text-gold-400" />
-                    <span>Mon - Fri (9:00 AM - 6:00 PM PST)</span>
+                    <MapPin size={16} color="var(--accent-cyan)" />
+                    <span>San Francisco Studio & Global Remote Team</span>
                   </div>
                 </div>
               </div>
@@ -264,6 +374,53 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      {/* Calendly Booking Modal Simulation */}
+      {showCalendlyModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 9999,
+            background: 'rgba(5, 7, 12, 0.9)',
+            backdropFilter: 'blur(16px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px',
+          }}
+          onClick={() => setShowCalendlyModal(false)}
+        >
+          <div
+            className="glass-card"
+            style={{ padding: '36px', maxWidth: '500px', width: '100%', borderRadius: '24px', textAlign: 'center' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Calendar size={48} color="var(--accent-pink)" style={{ margin: '0 auto 16px auto' }} />
+            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>
+              Schedule 15-Min Discovery Call
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '24px' }}>
+              Select a time slot directly on our official calendar to speak directly with Shreyash Srivastava & the OneSolve engineering team.
+            </p>
+            <div style={{ padding: '20px', background: 'rgba(0,0,0,0.4)', borderRadius: '16px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ fontWeight: 700, color: 'var(--accent-cyan)' }}>Available Slots Today & Tomorrow</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginTop: '4px' }}>10:00 AM • 2:30 PM • 4:00 PM PST</div>
+            </div>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button onClick={() => setShowCalendlyModal(false)} className="btn-secondary" style={{ flex: 1, justifyContent: 'center' }}>
+                Close
+              </button>
+              <a href="mailto:hello@onesolve.agency?subject=Discovery%20Call%20Booking" className="btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
+                Confirm Slot
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style>{`
         @media (max-width: 900px) {

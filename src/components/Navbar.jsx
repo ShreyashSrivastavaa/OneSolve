@@ -21,9 +21,11 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: '3D Lab', href: '#3d-lab' },
+    { label: 'AI Demos', href: '#demos' },
     { label: 'Work', href: '#portfolio' },
+    { label: 'Tech Stack', href: '#tech-stack' },
     { label: 'Process', href: '#process' },
+    { label: 'Why Us', href: '#capabilities' },
     { label: 'Reviews', href: '#testimonials' },
     { label: 'Contact', href: '#contact' },
   ];

@@ -1,71 +1,79 @@
 import React from 'react';
-import { Users, Code, Box, Palette, Award, Terminal, Globe, Share2, Code2 } from 'lucide-react';
+import { Users, Sparkles, Award, Globe, Code2, ShieldCheck, Zap, Bot } from 'lucide-react';
 
 export default function AboutUs() {
   const teamMembers = [
     {
-      name: 'John',
-      role: 'Lead Designer & Creative Director',
+      name: 'Shreyash Srivastava',
+      role: 'Founder & Lead Full-Stack Architect',
+      avatar: '⚡',
+      bio: 'High-impact full-stack engineer & AI system architect specializing in ultra-fast React/Next.js platforms, WebGL 3D graphics, scalable cloud microservices, and autonomous AI pipelines.',
+      skills: ['Full-Stack React/Next', 'AI & Agentic RAG', 'WebGL & Cloud Arch'],
+      color: '#00d9ff',
+      github: 'https://github.com/ShreyashSrivastavaa',
+      linkedin: 'https://linkedin.com/in/shreyashsrivastava',
+    },
+    {
+      name: 'Alex Vance',
+      role: 'Lead UX & Creative Director',
       avatar: '🎨',
       bio: 'Crafting visually arresting brand systems and high-converting UI frameworks for 8+ years.',
-      skills: ['Brand Identity', 'UI Architecture', '3D Layouts'],
+      skills: ['Brand Identity', 'UI Architecture', 'Design Systems'],
       color: '#ff006e',
+      github: '#',
+      linkedin: '#',
     },
     {
-      name: 'Sarah',
-      role: 'Senior Full-Stack & WebGL Dev',
-      avatar: '💻',
-      bio: 'Architecting ultra-fast, responsive web apps with complex 3D shader interactions and React.',
-      skills: ['React / Vite', 'Three.js / Shaders', 'Performance'],
-      color: '#00d9ff',
+      name: 'Dr. Marcus',
+      role: 'Principal AI & RAG Engineer',
+      avatar: '🤖',
+      bio: 'Specializing in autonomous multi-agent systems, LLM fine-tuning, RAG pipelines, and MCP servers.',
+      skills: ['Claude / OpenAI', 'LangChain / RAG', 'MCP Tools'],
+      color: '#9d4edd',
+      github: '#',
+      linkedin: '#',
     },
     {
-      name: 'Mike',
-      role: '3D Artist & Motion Designer',
+      name: 'Elena Rostova',
+      role: '3D Artist & Motion Lead',
       avatar: '🪐',
       bio: 'Breathing life into static interfaces with Cinema4D, Blender, WebGL models, and fluid animations.',
       skills: ['Blender / GLTF', 'Motion FX', '3D Sculpting'],
       color: '#ffb703',
-    },
-    {
-      name: 'Lisa',
-      role: 'Project Manager & Product Strategist',
-      avatar: '🚀',
-      bio: 'Ensuring seamless client delivery, roadmap execution, and product-market alignment.',
-      skills: ['Agile Sprints', 'Client Relations', 'UX Research'],
-      color: '#9d4edd',
+      github: '#',
+      linkedin: '#',
     },
   ];
 
-  const badges = [
-    'WebGL / Three.js',
-    'React & Vite',
-    '3D Motion Design',
-    'Brand Architecture',
-    'Figma Design Systems',
-    'GSAP & Shaders',
-    'UI/UX Prototyping',
-    'Tailwind & Vanilla CSS',
+  const stats = [
+    { val: '40+', label: 'Successful Projects', icon: Zap, color: '#00d9ff' },
+    { val: '30+', label: 'Happy Clients', icon: Users, color: '#ff006e' },
+    { val: '10+', label: 'Industries Served', icon: Globe, color: '#ffb703' },
+    { val: '99.9%', label: 'Uptime Average', icon: ShieldCheck, color: '#10b981' },
+    { val: '50%', label: 'Avg Client Growth', icon: Award, color: '#9d4edd' },
+    { val: '12', label: 'Expert Team Members', icon: Code2, color: '#38bdf8' },
+    { val: 'Global', label: 'Client Presence', icon: Globe, color: '#ec4899' },
+    { val: '100+', label: 'AI Solutions Deployed', icon: Bot, color: '#a855f7' },
   ];
 
   return (
     <section id="about" className="section-padding" style={{ position: 'relative', zIndex: 1 }}>
       <div className="container">
         {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 60px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 50px auto' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
             <Users size={14} />
-            <span>WHO WE ARE</span>
+            <span>MEET THE ONESOLVE SQUAD</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px' }}>
-            A Collective of <span className="gradient-text-pink">Creative Friends</span> & Builders
+            A Collective of <span className="gradient-text-pink">Builders & AI Engineers</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            OneSolve was born from a shared passion for pushing the boundaries of web experiences. We combine high-end design aesthetics with real-time 3D graphics to help brands leave unforgettable impressions.
+            OneSolve was born from a shared passion for merging high-end design aesthetics with real-time 3D graphics and autonomous AI intelligence.
           </p>
         </div>
 
-        {/* Meet the Team Grid */}
+        {/* Team Squad Grid */}
         <div
           style={{
             display: 'grid',
@@ -124,7 +132,7 @@ export default function AboutUs() {
               </div>
 
               <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                   {member.skills.map((skill) => (
                     <span
                       key={skill}
@@ -146,29 +154,54 @@ export default function AboutUs() {
           ))}
         </div>
 
-        {/* Expertise Badges */}
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h4 style={{ fontSize: '0.9rem', color: 'var(--text-dim)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '20px' }}>
-            Our Technical Stack & Core Competencies
-          </h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-            {badges.map((b) => (
-              <span
-                key={b}
-                style={{
-                  padding: '10px 20px',
-                  borderRadius: '30px',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  fontSize: '0.9rem',
-                  fontWeight: 500,
-                  color: 'var(--text-main)',
-                  transition: 'var(--transition-smooth)',
-                }}
-              >
-                ⚡ {b}
-              </span>
-            ))}
+        {/* PORTFOLIO STATS SECTION */}
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '30px' }}>
+            By The Numbers <span className="gradient-text-cyan">— Impact & Scale</span>
+          </h3>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '20px',
+            }}
+          >
+            {stats.map((st, i) => {
+              const Icon = st.icon;
+
+              return (
+                <div
+                  key={i}
+                  className="glass-card"
+                  style={{
+                    padding: '24px',
+                    borderRadius: '16px',
+                    textAlign: 'center',
+                    border: `1px solid ${st.color}30`,
+                    boxShadow: `0 0 20px ${st.color}15`,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '12px',
+                      background: `${st.color}15`,
+                      color: st.color,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 12px auto',
+                    }}
+                  >
+                    <Icon size={22} />
+                  </div>
+                  <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff' }}>{st.val}</div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '4px' }}>{st.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

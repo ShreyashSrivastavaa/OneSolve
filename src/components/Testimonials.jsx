@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, MessageSquareQuote, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, MessageSquareQuote, Quote, ShieldCheck, Zap } from 'lucide-react';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,46 +8,50 @@ export default function Testimonials() {
     {
       id: 1,
       quote:
-        'OneSolve turned our vision into an absolute masterpiece. Their 3D animations and WebGL performance left our board members and early adopters speechless.',
+        'OneSolve turned our vision into an absolute masterpiece. Their AI Chatbot engine and WebGL dashboard performance left our board members and users speechless.',
       author: 'Alex Vance',
       role: 'VP of Product',
       company: 'Synthetix AI',
       avatar: '👨‍💼',
       stars: 5,
-      project: 'AI Dashboard Redesign',
+      project: 'AI Chatbot & Dashboard Platform',
+      metric: '+300% User Engagement',
     },
     {
       id: 2,
       quote:
-        'Working with John, Sarah, and Mike was a seamless experience. They delivered a luxury brand identity and custom web store that generated 3.5x ROI in our first month.',
+        'They delivered a luxury brand identity and custom 3D WebGL storefront that generated 3.5x ROI in our very first month of launch!',
       author: 'Elena Rostova',
       role: 'Founder & Creative Lead',
       company: 'AURA Couture',
       avatar: '👩‍🎨',
       stars: 5,
-      project: 'E-Commerce Brand Identity',
+      project: '3D Product Visualizer & Branding',
+      metric: '3.5x Launch ROI',
     },
     {
       id: 3,
       quote:
-        'The interactive 3D model viewer they built for our quantum hardware allowed enterprise clients to dissect our specs directly in browser. Absolutely top-tier team!',
+        'OneSolve eliminated manual data entry bottlenecks completely across our enterprise operations by self-hosting n8n workflows.',
       author: 'Dr. Marcus Sterling',
       role: 'Chief Technology Officer',
-      company: 'Orion Dynamics',
+      company: 'Orion Global',
       avatar: '👨‍🔬',
       stars: 5,
-      project: '3D Product Visualization',
+      project: 'Enterprise Automation Suite',
+      metric: '30 Hrs Saved / Week',
     },
     {
       id: 4,
       quote:
-        'Our international tech summit campaign site sold out 5,000 VIP tickets within 48 hours. OneSolve is the secret weapon every modern startup needs.',
+        'Our dev team queries our internal codebase in natural language using the Agentic AI & MCP system OneSolve engineered for us.',
       author: 'Sarah Jenkins',
-      role: 'Head of Growth',
-      company: 'Apex Global',
+      role: 'Head of Engineering',
+      company: 'Apex Tech Labs',
       avatar: '👩‍💻',
       stars: 5,
-      project: 'Global Tech Summit Site',
+      project: 'Agentic AI & MCP Knowledge Graph',
+      metric: '15x Search Velocity',
     },
   ];
 
@@ -65,21 +69,21 @@ export default function Testimonials() {
     <section id="testimonials" className="section-padding" style={{ position: 'relative', zIndex: 1 }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 60px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
             <MessageSquareQuote size={14} />
-            <span>CLIENT TESTIMONIALS</span>
+            <span>VERIFIED CLIENT REVIEWS</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '20px' }}>
-            Loved By <span className="gradient-text-cyan">Founders & Innovators</span>
+            Trusted By <span className="gradient-text-cyan">Founders & Tech Leaders</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-            Don't just take our word for it—here is what our clients have to say about collaborating with OneSolve.
+            Discover how our full-stack engineering, 3D graphics, and AI automation transform real client businesses.
           </p>
         </div>
 
         {/* Carousel Card */}
-        <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '880px', margin: '0 auto' }}>
           <div
             className="glass-card"
             style={{
@@ -90,16 +94,37 @@ export default function Testimonials() {
               borderColor: 'rgba(0, 217, 255, 0.25)',
             }}
           >
-            {/* Quote Icon Graphic */}
+            {/* Quote Graphic */}
             <div style={{ position: 'absolute', top: '24px', right: '32px', color: 'rgba(0, 217, 255, 0.12)' }}>
               <Quote size={80} />
             </div>
 
-            {/* Stars */}
-            <div style={{ display: 'flex', gap: '6px', color: '#ffb703', marginBottom: '20px' }}>
-              {[...Array(active.stars)].map((_, i) => (
-                <Star key={i} size={20} fill="currentColor" />
-              ))}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+              {/* Stars */}
+              <div style={{ display: 'flex', gap: '6px', color: '#ffb703' }}>
+                {[...Array(active.stars)].map((_, i) => (
+                  <Star key={i} size={20} fill="currentColor" />
+                ))}
+              </div>
+
+              {/* Result Metric Pill */}
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  borderRadius: '20px',
+                  background: 'rgba(16, 185, 129, 0.15)',
+                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  color: '#10b981',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                }}
+              >
+                <Zap size={14} />
+                <span>Verified Result: {active.metric}</span>
+              </div>
             </div>
 
             {/* Quote Text */}
@@ -136,7 +161,7 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              {/* Navigation Controls */}
+              {/* Controls */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <button
                   onClick={prevReview}

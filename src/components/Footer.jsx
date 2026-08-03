@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowUp, Send, CheckCircle2, Globe, Share2, ExternalLink, MessageSquare } from 'lucide-react';
+import { Sparkles, ArrowUp, Send, CheckCircle2, Globe, Share2, ExternalLink, MessageSquare, Terminal, FileText } from 'lucide-react';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -33,8 +33,8 @@ export default function Footer() {
             <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
               <div
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '10px',
                   background: 'linear-gradient(135deg, #00d9ff 0%, #ff006e 100%)',
                   display: 'flex',
@@ -44,12 +44,12 @@ export default function Footer() {
               >
                 <Sparkles size={20} color="#000" />
               </div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.3rem', color: '#fff' }}>
+              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4rem', color: '#fff' }}>
                 One<span style={{ color: 'var(--accent-cyan)' }}>Solve</span>
               </span>
             </a>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
-              We are a freelance creative agency delivering cutting-edge web design, 3D animations, and digital experiences to startups worldwide.
+              Full-Stack Creative & AI Solutions Agency. We engineer bespoke web apps, 3D WebGL experiences, autonomous AI agents, and cloud automation platforms.
             </p>
 
             {/* Social Icons */}
@@ -97,35 +97,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Quick Links */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Navigation</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Quick Links</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
-              <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>About Us</a>
-              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
-              <a href="#3d-lab" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>3D Lab</a>
-              <a href="#portfolio" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Selected Work</a>
-              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Process</a>
+              <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>About Squad</a>
+              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>10 Services</a>
+              <a href="#demos" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>AI & 3D Demos</a>
+              <a href="#portfolio" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Case Studies</a>
+              <a href="#tech-stack" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Tech Arsenal</a>
+              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>8-Step Process</a>
+              <a href="#contact" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Contact Us</a>
             </div>
           </div>
 
-          {/* Services Links */}
+          {/* Resources */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Services</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Resources</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-              <span>Web Development</span>
-              <span>3D Animation</span>
-              <span>Brand Identity</span>
-              <span>UI/UX Design</span>
-              <span>GLSL Shaders</span>
+              <span>Documentation</span>
+              <span>API Reference</span>
+              <span>Agentic AI Playbook</span>
+              <span>Case Studies PDF</span>
+              <span>Privacy & Terms</span>
             </div>
           </div>
 
           {/* Newsletter Form */}
           <div style={{ gridColumn: 'span 4' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Stay In The Loop</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>Get AI & Tech Updates</h4>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '16px' }}>
-              Subscribe to our monthly journal on 3D web trends, WebGL shaders, and design innovation.
+              Subscribe to our monthly tech journal on AI agents, 3D WebGL shaders, and web development innovations.
             </p>
 
             {subscribed ? (
@@ -138,7 +140,7 @@ export default function Footer() {
                 <input
                   type="email"
                   required
-                  placeholder="Enter email..."
+                  placeholder="Enter work email..."
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   style={{
@@ -175,7 +177,7 @@ export default function Footer() {
           }}
         >
           <div>
-            © {new Date().getFullYear()} OneSolve Creative Agency. All rights reserved. Built with React & Three.js.
+            © {new Date().getFullYear()} OneSolve Agency. Enterprise Creative & AI Solutions. All rights reserved.
           </div>
 
           <button
