@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight, Play, Sparkles, ChevronDown } from 'lucide-react';
+import { ArrowRight, Play, Sparkles, ChevronDown, Zap } from 'lucide-react';
 import ThreeCanvas from './ThreeCanvas';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
@@ -15,12 +16,25 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        background: '#fafafa',
+        background: 'var(--gradient-hero)',
         paddingTop: '60px',
       }}
     >
       {/* Subtle WebGL Gradient Canvas */}
       <ThreeCanvas />
+
+      {/* Gradient Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'radial-gradient(ellipse at 30% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 100%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)',
+          pointerEvents: 'none',
+        }}
+      />
 
       {/* Hero Content Container */}
       <div
@@ -34,34 +48,51 @@ export default function Hero() {
       >
         <div style={{ maxWidth: '820px' }}>
           {/* Badge Pill */}
-          <div style={{ marginBottom: '24px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ marginBottom: '24px' }}
+          >
             <div className="badge-pill">
               <Sparkles size={14} />
               <span>MINIMALIST WEBGL & AI AGENCY</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Massive Headline */}
-          <h1 className="hero-headline-unicorn" style={{ marginBottom: '20px' }}>
+          <motion.h1
+            className="hero-headline-unicorn"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{ marginBottom: '20px' }}
+          >
             One<span className="gradient-text-purple">Solve</span>
-          </h1>
+          </motion.h1>
 
           {/* Subheadline */}
-          <h2
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             style={{
               fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
               fontWeight: 700,
-              color: '#1a1a1a',
+              color: 'var(--text-main)',
               marginBottom: '24px',
               letterSpacing: '-0.02em',
               lineHeight: 1.15,
             }}
           >
             We Create Beautiful Digital Experiences
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             style={{
               fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
               color: 'var(--text-muted)',
@@ -71,10 +102,13 @@ export default function Hero() {
             }}
           >
             We are a full-stack digital solutions agency crafting high-conversion web platforms, WebGL 3D experiences, and autonomous AI automation.
-          </p>
+          </motion.p>
 
           {/* Action CTAs */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -91,7 +125,48 @@ export default function Hero() {
               <Play size={16} fill="currentColor" color="var(--accent-purple)" />
               <span>View Our Work</span>
             </a>
-          </div>
+          </motion.div>
+
+          {/* Feature Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px',
+              alignItems: 'center',
+            }}
+          >
+            {[
+              { icon: Zap, text: 'AI-Powered', color: 'var(--accent-purple)' },
+              { icon: Zap, text: 'WebGL 3D', color: 'var(--accent-pink)' },
+              { icon: Zap, text: 'Lightning Fast', color: 'var(--accent-cyan)' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 16px',
+                  borderRadius: '20px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  color: 'var(--text-muted)',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                }}
+              >
+                <item.icon size={14} style={{ color: item.color }} />
+                <span>{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
 

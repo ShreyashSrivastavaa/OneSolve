@@ -206,7 +206,7 @@ export default function Services() {
     <section
       id="services"
       className="section-padding"
-      style={{ position: 'relative', zIndex: 1, background: '#fafafa' }}
+      style={{ position: 'relative', zIndex: 1, background: 'var(--bg-secondary)' }}
     >
       <div className="container">
         {/* Section Header */}
@@ -215,7 +215,7 @@ export default function Services() {
             <Layers size={14} />
             <span>OUR DISCIPLINES</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px' }}>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px', color: 'var(--text-main)' }}>
             Our <span className="gradient-text-purple">Services</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6 }}>
@@ -248,9 +248,9 @@ export default function Services() {
                   justifyContent: 'space-between',
                   position: 'relative',
                   overflow: 'hidden',
-                  background: '#ffffff',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+                  background: 'rgba(26, 26, 36, 0.8)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
                 }}
               >
                 {/* Top Accent Line */}
@@ -296,7 +296,7 @@ export default function Services() {
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '12px' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '12px' }}>
                     {srv.title}
                   </h3>
 
@@ -314,9 +314,10 @@ export default function Services() {
                           fontSize: '0.78rem',
                           padding: '4px 12px',
                           borderRadius: '20px',
-                          background: '#f4f4f6',
-                          color: '#666',
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          color: 'var(--text-muted)',
                           fontWeight: 500,
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
                         }}
                       >
                         {tag}
@@ -354,7 +355,7 @@ export default function Services() {
             right: 0,
             bottom: 0,
             zIndex: 9999,
-            background: 'rgba(0, 0, 0, 0.6)',
+            background: 'rgba(0, 0, 0, 0.8)',
             backdropFilter: 'blur(12px)',
             display: 'flex',
             alignItems: 'center',
@@ -370,8 +371,9 @@ export default function Services() {
               maxWidth: '650px',
               width: '100%',
               borderRadius: '24px',
-              background: '#ffffff',
+              background: 'rgba(26, 26, 36, 0.95)',
               position: 'relative',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -381,7 +383,7 @@ export default function Services() {
                 position: 'absolute',
                 top: '20px',
                 right: '20px',
-                background: 'rgba(0,0,0,0.05)',
+                background: 'rgba(255, 255, 255, 0.1)',
                 border: 'none',
                 borderRadius: '50%',
                 width: '36px',
@@ -392,7 +394,7 @@ export default function Services() {
                 cursor: 'pointer',
               }}
             >
-              <X size={20} color="#1a1a1a" />
+              <X size={20} color="#ffffff" />
             </button>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
@@ -400,7 +402,7 @@ export default function Services() {
                 style={{
                   padding: '14px',
                   borderRadius: '16px',
-                  background: `${activeService.accent}15`,
+                  background: `${activeService.accent}25`,
                   color: activeService.accent,
                 }}
               >
@@ -410,7 +412,7 @@ export default function Services() {
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: activeService.accent }}>
                   {activeService.projectCount}
                 </span>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1a1a1a' }}>{activeService.title}</h3>
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>{activeService.title}</h3>
               </div>
             </div>
 
@@ -418,7 +420,7 @@ export default function Services() {
               {activeService.description}
             </p>
 
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '14px' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '14px' }}>
               Key Deliverables & Capabilities:
             </h4>
 
@@ -426,7 +428,7 @@ export default function Services() {
               {activeService.features.map((feat, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <CheckCircle size={18} color={activeService.accent} />
-                  <span style={{ fontSize: '0.92rem', color: '#1a1a1a' }}>{feat}</span>
+                  <span style={{ fontSize: '0.92rem', color: 'var(--text-muted)' }}>{feat}</span>
                 </div>
               ))}
             </div>

@@ -18,8 +18,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
-        background: '#ffffff',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'var(--bg-secondary)',
         paddingTop: '80px',
         paddingBottom: '40px',
         position: 'relative',
@@ -40,12 +40,12 @@ export default function Footer() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
+                  boxShadow: '0 4px 15px rgba(139, 92, 246, 0.4)',
                 }}
               >
                 <Sparkles size={20} color="#fff" />
               </div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4rem', color: '#1a1a1a' }}>
+              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.4rem', color: 'var(--text-main)' }}>
                 One<span style={{ color: 'var(--accent-purple)' }}>Solve</span>
               </span>
             </a>
@@ -71,14 +71,24 @@ export default function Footer() {
                       width: '38px',
                       height: '38px',
                       borderRadius: '50%',
-                      background: '#f4f4f6',
-                      border: '1px solid rgba(0, 0, 0, 0.06)',
-                      color: '#1a1a1a',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      color: 'var(--text-main)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       textDecoration: 'none',
                       transition: 'var(--transition-smooth)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.4)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
                     <Icon size={18} />
@@ -90,32 +100,32 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Quick Links</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>Quick Links</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
-              <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>About Squad</a>
-              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
-              <a href="#demos" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>AI Demos</a>
-              <a href="#portfolio" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Case Studies</a>
-              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Process</a>
-              <a href="#contact" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Contact Us</a>
+              <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>About Squad</a>
+              <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Services</a>
+              <a href="#demos" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>AI Demos</a>
+              <a href="#portfolio" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Case Studies</a>
+              <a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Process</a>
+              <a href="#contact" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Contact Us</a>
             </div>
           </div>
 
           {/* Resources */}
           <div style={{ gridColumn: 'span 2' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Resources</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>Resources</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-              <span>Documentation</span>
-              <span>API Reference</span>
-              <span>Agentic AI Playbook</span>
-              <span>Case Studies PDF</span>
-              <span>Privacy & Terms</span>
+              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Documentation</span>
+              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>API Reference</span>
+              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Agentic AI Playbook</span>
+              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Case Studies PDF</span>
+              <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-purple)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Privacy & Terms</span>
             </div>
           </div>
 
           {/* Newsletter Form */}
           <div style={{ gridColumn: 'span 4' }} className="footer-col">
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '16px' }}>Get Tech Updates</h4>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>Get Tech Updates</h4>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '16px' }}>
               Subscribe to our monthly journal on AI agents, WebGL graphics, and web development innovations.
             </p>
@@ -137,9 +147,9 @@ export default function Footer() {
                     flex: 1,
                     padding: '12px 16px',
                     borderRadius: '10px',
-                    background: '#f4f4f6',
-                    border: '1px solid rgba(0, 0, 0, 0.08)',
-                    color: '#1a1a1a',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: 'var(--text-main)',
                     outline: 'none',
                     fontSize: '0.88rem',
                   }}
@@ -155,7 +165,7 @@ export default function Footer() {
         {/* Bottom Copyright & Back to top */}
         <div
           style={{
-            borderTop: '1px solid rgba(0, 0, 0, 0.06)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             paddingTop: '24px',
             display: 'flex',
             alignItems: 'center',

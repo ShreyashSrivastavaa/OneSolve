@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
+import SocialProof from './components/SocialProof';
+import ProblemSolution from './components/ProblemSolution';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
+import ProductShowcase from './components/ProductShowcase';
+import FeatureList from './components/FeatureList';
 import InteractiveDemos from './components/InteractiveDemos';
 import Portfolio from './components/Portfolio';
 import TechArsenal from './components/TechArsenal';
@@ -30,8 +34,12 @@ export default function App() {
       {/* Main Content Sections */}
       <main>
         <Hero onSelectService={setSelectedServiceId} />
+        <SocialProof />
+        <ProblemSolution />
         <AboutUs />
         <Services selectedServiceId={selectedServiceId} setSelectedServiceId={setSelectedServiceId} />
+        <ProductShowcase />
+        <FeatureList />
         <InteractiveDemos />
         <Portfolio />
         <TechArsenal />
