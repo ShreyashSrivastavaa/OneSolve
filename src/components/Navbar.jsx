@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, ArrowUpRight, MousePointer } from 'lucide-react';
-import AudioSynthesizer from './AudioSynthesizer';
+import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
-export default function Navbar({ cursorEnabled, setCursorEnabled }) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -21,12 +14,8 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'AI Demos', href: '#demos' },
     { label: 'Work', href: '#portfolio' },
     { label: 'Process', href: '#process' },
-    { label: 'Tech Stack', href: '#tech-stack' },
-    { label: 'Team', href: '#team' },
-    { label: 'Reviews', href: '#testimonials' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -38,139 +27,144 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: isScrolled ? '14px 0' : '22px 0',
-        transition: 'var(--transition-smooth)',
-        backgroundColor: isScrolled ? 'rgba(250, 250, 250, 0.88)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.06)' : 'none',
-        boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.03)' : 'none',
+        height: isScrolled ? '72px' : '88px',
+        padding: '0 40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        background: isScrolled
+          ? 'rgba(15, 23, 42, 0.85)'
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        {/* Brand Logo */}
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div
+      {/* Brand Logo */}
+      <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div
+          style={{
+            width: '32px',
+            height: '32px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #6366f1 0%, #818cf8 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(99, 102, 241, 0.4)',
+            flexShrink: 0,
+          }}
+        >
+          <Sparkles size={17} color="#fff" />
+        </div>
+        <span
+          style={{
+            fontFamily: 'var(--font-heading)',
+            fontWeight: 700,
+            fontSize: '1.1rem',
+            color: 'var(--text-main)',
+            letterSpacing: '-0.02em',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Upscale<span style={{ color: '#818cf8' }}>TechSolutions</span>
+        </span>
+      </a>
+
+      {/* Desktop Navigation */}
+      <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
+        {navLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
             style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+              fontWeight: 500,
+              fontSize: '0.9rem',
+              transition: 'color 0.2s ease',
+              fontFamily: 'var(--font-body)',
             }}
+            onMouseEnter={(e) => (e.target.style.color = 'var(--text-main)')}
+            onMouseLeave={(e) => (e.target.style.color = 'var(--text-muted)')}
           >
-            <Sparkles size={20} color="#fff" />
-          </div>
-          <div>
-            <span
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 900,
-                fontSize: '1.35rem',
-                color: '#1a1a1a',
-                letterSpacing: '-0.03em',
-              }}
-            >
-              One<span style={{ color: 'var(--accent-purple)' }}>Solve</span>
-            </span>
-            <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em', fontWeight: 700 }}>
-              CREATIVE AGENCY
-            </span>
-          </div>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      {/* Actions */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <a
+          href="#contact"
+          className="desktop-nav"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '8px 20px',
+            borderRadius: '50px',
+            background: 'rgba(99, 102, 241, 0.15)',
+            border: '1px solid rgba(99, 102, 241, 0.35)',
+            color: '#c7d2fe',
+            fontFamily: 'var(--font-body)',
+            fontWeight: 600,
+            fontSize: '0.88rem',
+            textDecoration: 'none',
+            transition: 'all 0.25s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(99,102,241,0.3)';
+            e.currentTarget.style.borderColor = 'rgba(99,102,241,0.6)';
+            e.currentTarget.style.color = '#fff';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
+            e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)';
+            e.currentTarget.style.color = '#c7d2fe';
+          }}
+        >
+          <span>Start Project</span>
+          <ArrowUpRight size={14} />
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '22px' }} className="desktop-nav">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              style={{
-                color: '#1a1a1a',
-                textDecoration: 'none',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                transition: 'var(--transition-smooth)',
-              }}
-              onMouseEnter={(e) => (e.target.style.color = 'var(--accent-purple)')}
-              onMouseLeave={(e) => (e.target.style.color = '#1a1a1a')}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Header Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <AudioSynthesizer />
-
-          {/* Cursor Toggle Button */}
-          <button
-            onClick={() => setCursorEnabled(!cursorEnabled)}
-            className="badge-pill cursor-pointer hidden-mobile"
-            style={{
-              background: cursorEnabled ? 'rgba(139, 92, 246, 0.1)' : 'rgba(0, 0, 0, 0.04)',
-              borderColor: cursorEnabled ? 'rgba(139, 92, 246, 0.3)' : 'rgba(0, 0, 0, 0.08)',
-              color: cursorEnabled ? 'var(--accent-purple)' : '#666',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}
-            title="Toggle Custom Glowing Cursor"
-          >
-            <MousePointer size={14} />
-            <span style={{ fontSize: '0.75rem' }}>{cursorEnabled ? 'CURSOR ON' : 'CURSOR OFF'}</span>
-          </button>
-
-          {/* Start Project CTA */}
-          <a
-            href="#contact"
-            className="btn-primary desktop-nav"
-            style={{ padding: '10px 22px', fontSize: '0.85rem' }}
-          >
-            <span>Start Project</span>
-            <ArrowUpRight size={16} />
-          </a>
-
-          {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="mobile-toggle"
-            style={{
-              background: 'rgba(0, 0, 0, 0.05)',
-              border: '1px solid rgba(0, 0, 0, 0.1)',
-              borderRadius: '10px',
-              padding: '8px',
-              color: '#1a1a1a',
-              cursor: 'pointer',
-              display: 'none',
-            }}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        {/* Mobile Toggle */}
+        <button
+          className="mobile-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          style={{
+            display: 'none',
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '10px',
+            padding: '8px',
+            color: 'var(--text-main)',
+            cursor: 'pointer',
+          }}
+        >
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
           style={{
             position: 'fixed',
-            top: '70px',
+            top: '72px',
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(250, 250, 250, 0.98)',
-            backdropFilter: 'blur(20px)',
+            background: 'rgba(15, 23, 42, 0.97)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
             zIndex: 999,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: '20px',
+            gap: '24px',
             padding: '40px',
           }}
         >
@@ -181,10 +175,11 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '1.5rem',
+                fontSize: '2rem',
                 fontWeight: 700,
-                color: '#1a1a1a',
+                color: 'var(--text-main)',
                 textDecoration: 'none',
+                opacity: 0.85,
               }}
             >
               {link.label}
@@ -194,20 +189,12 @@ export default function Navbar({ cursorEnabled, setCursorEnabled }) {
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="btn-primary"
-            style={{ marginTop: '20px', width: '100%', justifyContent: 'center' }}
+            style={{ marginTop: '16px', width: '100%', justifyContent: 'center' }}
           >
             Start Your Project
           </a>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 900px) {
-          .desktop-nav { display: none !important; }
-          .hidden-mobile { display: none !important; }
-          .mobile-toggle { display: block !important; }
-        }
-      `}</style>
     </header>
   );
 }

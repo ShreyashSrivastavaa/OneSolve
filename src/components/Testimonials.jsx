@@ -1,318 +1,177 @@
-import React, { useState, useEffect } from 'react';
-import { Star, MessageSquareQuote, Quote, Zap, Heart, AtSign } from 'lucide-react';
+import React from 'react';
 
-export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const reviews = [
+  {
+    author: 'Alex Vance',
+    handle: '@alexvance',
+    quote: 'UpscaleTechSolutions turned our vision into an absolute masterpiece. Their AI Chatbot engine and WebGL dashboard left our board members speechless.',
+  },
+  {
+    author: 'Elena Rostova',
+    handle: '@elenarostova',
+    quote: 'They delivered a luxury brand identity and custom 3D WebGL storefront that generated 3.5× ROI in our very first month of launch!',
+  },
+  {
+    author: 'Dr. Marcus Sterling',
+    handle: '@drsterling',
+    quote: 'UpscaleTechSolutions eliminated our manual data entry bottlenecks completely across enterprise operations using self-hosted n8n workflows.',
+  },
+  {
+    author: 'Sarah Jenkins',
+    handle: '@sarahjenkins',
+    quote: 'Our dev team queries our internal codebase in natural language using the Agentic AI & MCP system they engineered. Game-changer! 🤯',
+  },
+  {
+    author: 'James Liu',
+    handle: '@jamesliu',
+    quote: "The RAG knowledge system they built for us made our support team 15× faster at finding answers. Truly impressive engineering.",
+  },
+  {
+    author: 'Priya Sharma',
+    handle: '@priyasharma',
+    quote: "Our new website went from a template to a world-class product. The 3D animations and performance scores are off the charts.",
+  },
+  {
+    author: 'Carlos Mendez',
+    handle: '@carlosmendez',
+    quote: "If you want top-tier AI automation and a website that actually converts — UpscaleTechSolutions is the only call you need to make.",
+  },
+  {
+    author: 'Lily Chen',
+    handle: '@lilychen',
+    quote: "Free from manual reporting forever! Their automated workflow pipelines have saved us 30+ hours every single week.",
+  },
+];
 
-  const reviews = [
-    {
-      id: 1,
-      quote:
-        'OneSolve turned our vision into an absolute masterpiece. Their AI Chatbot engine and WebGL dashboard performance left our board members and users speechless.',
-      author: 'Alex Vance',
-      handle: '@alexvance',
-      role: 'VP of Product',
-      company: 'Synthetix AI',
-      avatar: '👨‍💼',
-      stars: 5,
-      project: 'AI Chatbot & Dashboard Platform',
-      metric: '+300% User Engagement',
-      likes: 142,
-      retweets: 28,
-    },
-    {
-      id: 2,
-      quote:
-        'They delivered a luxury brand identity and custom 3D WebGL storefront that generated 3.5x ROI in our very first month of launch!',
-      author: 'Elena Rostova',
-      handle: '@elenarostova',
-      role: 'Founder & Creative Lead',
-      company: 'AURA Couture',
-      avatar: '👩‍🎨',
-      stars: 5,
-      project: '3D Product Visualizer & Branding',
-      metric: '3.5x Launch ROI',
-      likes: 256,
-      retweets: 45,
-    },
-    {
-      id: 3,
-      quote:
-        'OneSolve eliminated manual data entry bottlenecks completely across our enterprise operations by self-hosting n8n workflows.',
-      author: 'Dr. Marcus Sterling',
-      handle: '@drsterling',
-      role: 'Chief Technology Officer',
-      company: 'Orion Global',
-      avatar: '👨‍🔬',
-      stars: 5,
-      project: 'Enterprise Automation Suite',
-      metric: '30 Hrs Saved / Week',
-      likes: 189,
-      retweets: 34,
-    },
-    {
-      id: 4,
-      quote:
-        'Our dev team queries our internal codebase in natural language using the Agentic AI & MCP system OneSolve engineered for us.',
-      author: 'Sarah Jenkins',
-      handle: '@sarahjenkins',
-      role: 'Head of Engineering',
-      company: 'Apex Tech Labs',
-      avatar: '👩‍💻',
-      stars: 5,
-      project: 'Agentic AI & MCP Knowledge Graph',
-      metric: '15x Search Velocity',
-      likes: 312,
-      retweets: 67,
-    },
-  ];
+// Duplicate for seamless loop
+const doubled = [...reviews, ...reviews];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [reviews.length]);
-
-  const active = reviews[currentIndex];
-
+function ReviewCard({ review }) {
   return (
-    <section id="testimonials" className="section-padding" style={{ position: 'relative', zIndex: 1, background: 'var(--bg-secondary)' }}>
-      <div className="container">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
-          <div className="badge-pill" style={{ marginBottom: '16px' }}>
-            <MessageSquareQuote size={14} />
-            <span>CLIENT LOVE</span>
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px', color: 'var(--text-main)' }}>
-            Client <span className="gradient-text-purple">Love</span>
-          </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-            Discover how our full-stack engineering, 3D graphics, and AI automation transform real client businesses.
+    <figure
+      style={{
+        width: '280px',
+        flexShrink: 0,
+        background: 'rgba(30, 41, 59, 0.7)',
+        border: '1px solid rgba(255,255,255,0.07)',
+        borderRadius: '16px',
+        padding: '20px',
+        cursor: 'pointer',
+        transition: 'background 0.2s ease, border-color 0.2s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = 'rgba(41,53,72,0.9)';
+        e.currentTarget.style.borderColor = 'rgba(99,102,241,0.2)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = 'rgba(30,41,59,0.7)';
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+        <div
+          style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            color: '#c7d2fe',
+            flexShrink: 0,
+            border: '1px solid rgba(99,102,241,0.3)',
+          }}
+        >
+          {review.author.charAt(0)}
+        </div>
+        <div>
+          <figcaption style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>
+            {review.author}
+          </figcaption>
+          <p style={{ fontSize: '0.76rem', color: 'var(--text-dim)', fontWeight: 500 }}>
+            {review.handle}
           </p>
         </div>
+      </div>
+      <blockquote
+        style={{
+          fontSize: '0.88rem',
+          color: 'var(--text-muted)',
+          lineHeight: 1.65,
+          margin: 0,
+        }}
+      >
+        {review.quote}
+      </blockquote>
+    </figure>
+  );
+}
 
-        {/* Social-style Testimonials Grid */}
+export default function Testimonials() {
+  return (
+    <section
+      id="testimonials"
+      style={{
+        position: 'relative',
+        background: 'var(--bg-primary)',
+        padding: '100px 0',
+        overflow: 'hidden',
+        zIndex: 1,
+      }}
+    >
+      {/* Heading */}
+      <div style={{ textAlign: 'center', marginBottom: '48px', padding: '0 24px' }}>
+        <h2
+          className="section-heading"
+          style={{ marginBottom: '12px' }}
+        >
+          Hey, people seem to love us too!
+        </h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
+          Real results from real clients — here's what they're saying.
+        </p>
+      </div>
+
+      {/* Marquee */}
+      <div
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Fade edges */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '24px',
-            maxWidth: '1200px',
-            margin: '0 auto',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: '100px',
+            background: 'linear-gradient(to right, var(--bg-primary), transparent)',
+            zIndex: 2,
+            pointerEvents: 'none',
           }}
-        >
-          {reviews.map((review, index) => (
-            <div
-              key={review.id}
-              className="glass-card"
-              style={{
-                padding: '24px',
-                borderRadius: '16px',
-                position: 'relative',
-                background: index === currentIndex ? 'rgba(139, 92, 246, 0.1)' : 'rgba(26, 26, 36, 0.8)',
-                border: index === currentIndex ? '2px solid var(--accent-purple)' : '1px solid rgba(255, 255, 255, 0.1)',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-              }}
-              onClick={() => setCurrentIndex(index)}
-            >
-              {/* Social-style Header */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'rgba(139, 92, 246, 0.2)',
-                    border: '2px solid var(--accent-purple)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.4rem',
-                  }}
-                >
-                  {review.avatar}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>
-                      {review.author}
-                    </h4>
-                    <AtSign size={14} style={{ color: 'var(--accent-purple)' }} />
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
-                    {review.handle}
-                  </div>
-                </div>
-              </div>
+        />
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: '100px',
+            background: 'linear-gradient(to left, var(--bg-primary), transparent)',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}
+        />
 
-              {/* Tweet Content */}
-              <p
-                style={{
-                  fontSize: '0.95rem',
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.6,
-                  marginBottom: '16px',
-                }}
-              >
-                "{review.quote}"
-              </p>
-
-              {/* Metric Badge */}
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 12px',
-                  borderRadius: '20px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  color: '#10b981',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  marginBottom: '16px',
-                }}
-              >
-                <Zap size={12} />
-                <span>{review.metric}</span>
-              </div>
-
-              {/* Engagement Stats */}
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '16px',
-                  paddingTop: '12px',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--text-dim)', fontSize: '0.8rem' }}>
-                  <Heart size={14} />
-                  <span>{review.likes}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--text-dim)', fontSize: '0.8rem' }}>
-                  <MessageSquareQuote size={14} />
-                  <span>{review.retweets}</span>
-                </div>
-              </div>
-            </div>
+        <div className="cards-marquee-track" style={{ padding: '8px 0' }}>
+          {doubled.map((review, i) => (
+            <ReviewCard key={i} review={review} />
           ))}
-        </div>
-
-        {/* Featured Review - Large Display */}
-        <div
-          style={{
-            maxWidth: '800px',
-            margin: '48px auto 0 auto',
-          }}
-        >
-          <div
-            className="glass-card"
-            style={{
-              padding: '40px',
-              borderRadius: '24px',
-              position: 'relative',
-              background: 'rgba(26, 26, 36, 0.9)',
-              border: '2px solid var(--accent-purple)',
-              boxShadow: '0 8px 30px rgba(139, 92, 246, 0.2)',
-            }}
-          >
-            {/* Quote Graphic */}
-            <div style={{ position: 'absolute', top: '24px', right: '32px', color: 'rgba(139, 92, 246, 0.2)' }}>
-              <Quote size={60} />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '10px' }}>
-              {/* Stars */}
-              <div style={{ display: 'flex', gap: '6px', color: '#f59e0b' }}>
-                {[...Array(active.stars)].map((_, i) => (
-                  <Star key={i} size={18} fill="currentColor" />
-                ))}
-              </div>
-
-              {/* Result Metric Pill */}
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  color: '#10b981',
-                  fontSize: '0.82rem',
-                  fontWeight: 700,
-                }}
-              >
-                <Zap size={14} />
-                <span>Result: {active.metric}</span>
-              </div>
-            </div>
-
-            {/* Quote Text */}
-            <p
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-                color: 'var(--text-main)',
-                lineHeight: 1.6,
-                marginBottom: '32px',
-                position: 'relative',
-                zIndex: 1,
-                fontStyle: 'italic',
-              }}
-            >
-              "{active.quote}"
-            </p>
-
-            {/* Client Info Footer */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
-                    background: 'rgba(139, 92, 246, 0.2)',
-                    border: '2px solid var(--accent-purple)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.8rem',
-                  }}
-                >
-                  {active.avatar}
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>{active.author}</h4>
-                  <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-                    {active.role} • <span style={{ color: 'var(--accent-purple)', fontWeight: 600 }}>{active.company}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: '12px',
-                  background: 'rgba(139, 92, 246, 0.1)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                }}
-              >
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontWeight: 600, marginBottom: '2px' }}>
-                  PROJECT
-                </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--accent-purple)', fontWeight: 700 }}>
-                  {active.project}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

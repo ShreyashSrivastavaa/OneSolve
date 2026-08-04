@@ -1,292 +1,131 @@
 import React from 'react';
-import { AlertTriangle, CheckCircle, Rocket, Lightbulb, Target, ArrowRight } from 'lucide-react';
+
+const cards = [
+  {
+    id: 'card-1',
+    tint: 'indigo-tint',
+    heading: 'Your digital presence deserves better.',
+    body: 'Got an outdated website, a clunky process, or a product idea stuck in your head?\n\nWe have all been there — big vision, limited execution.',
+    emoji: '🌟',
+    side: 'right',
+  },
+  {
+    id: 'card-2',
+    tint: 'blue-tint',
+    heading: 'Generic solutions do not cut it.',
+    body: 'You could settle for a template website, off-the-shelf software, or spend a fortune patching together tools that barely talk to each other.\n\nOr keep waiting for the perfect moment — but that rarely comes.',
+    emoji: '⚡',
+    side: 'left',
+  },
+  {
+    id: 'card-3',
+    tint: 'violet-tint',
+    heading: 'We build exactly what you need.',
+    body: 'Here is UpscaleTechSolutions — custom AI, intelligent automation, and stunning web experiences built specifically for your business.\n\nEasy to use, built to scale, and designed to impress.',
+    emoji: '🚀',
+    side: 'right',
+  },
+];
+
+function IllustrationBlock({ emoji, tint }) {
+  const glowColors = {
+    'indigo-tint': 'rgba(99,102,241,0.15)',
+    'blue-tint': 'rgba(59,130,246,0.12)',
+    'violet-tint': 'rgba(139,92,246,0.15)',
+  };
+
+  return (
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '360px',
+        aspectRatio: '4/3',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '20px',
+        background: glowColors[tint] || 'rgba(99,102,241,0.1)',
+        border: '1px solid rgba(255,255,255,0.06)',
+        flexShrink: 0,
+        fontSize: '5rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: `radial-gradient(circle at center, ${glowColors[tint]} 0%, transparent 70%)`,
+        }}
+      />
+      <span style={{ position: 'relative', filter: 'drop-shadow(0 0 20px rgba(99,102,241,0.4))' }}>
+        {emoji}
+      </span>
+    </div>
+  );
+}
 
 export default function ProblemSolution() {
   return (
     <section
+      id="about"
       className="section-padding"
-      style={{
-        position: 'relative',
-        background: 'var(--bg-primary)',
-      }}
+      style={{ position: 'relative', zIndex: 1, background: 'var(--bg-primary)' }}
     >
       <div className="container">
-        {/* Section Header */}
-        <div
-          style={{
-            textAlign: 'center',
-            maxWidth: '750px',
-            margin: '0 auto 80px auto',
-          }}
-        >
-          <div className="badge-pill" style={{ marginBottom: '16px' }}>
-            <Lightbulb size={14} />
-            <span>THE CHALLENGE</span>
-          </div>
-          <h2
-            style={{
-              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-              fontWeight: 800,
-              marginBottom: '20px',
-              color: 'var(--text-main)',
-            }}
-          >
-            Digital experiences shouldn't be
-            <span className="gradient-text-purple"> complicated</span>
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <h2 className="section-heading" style={{ marginBottom: '16px' }}>
+            Your pixels, <br />enhanced for life.
           </h2>
-          <p
-            style={{
-              fontSize: '1.1rem',
-              color: 'var(--text-muted)',
-              lineHeight: 1.7,
-            }}
-          >
-            Building exceptional digital products shouldn't feel like rocket science. Yet so many businesses struggle with fragmented solutions, slow performance, and generic designs.
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '520px', margin: '0 auto' }}>
+            We help businesses build smarter, look better, and grow faster.
           </p>
         </div>
 
-        {/* Problem Section */}
-        <div
-          style={{
-            maxWidth: '900px',
-            margin: '0 auto 80px auto',
-          }}
-        >
-          <div
-            className="glass-card"
-            style={{
-              padding: '48px',
-              position: 'relative',
-            }}
-          >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {cards.map((card) => (
             <div
+              key={card.id}
+              className={`info-card ${card.tint}`}
               style={{
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-                width: '60px',
-                height: '60px',
-                borderRadius: '50%',
-                background: 'rgba(239, 68, 68, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                flexDirection: card.side === 'right' ? 'row' : 'row-reverse',
               }}
             >
-              <AlertTriangle size={28} style={{ color: '#ef4444' }} />
-            </div>
-
-            <h3
-              style={{
-                fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                fontWeight: 700,
-                marginBottom: '20px',
-                color: 'var(--text-main)',
-              }}
-            >
-              The struggle is real
-            </h3>
-
-            <p
-              style={{
-                fontSize: '1.1rem',
-                color: 'var(--text-muted)',
-                lineHeight: 1.7,
-                marginBottom: '32px',
-              }}
-            >
-              Got a brilliant digital vision but stuck with outdated technology? Love your business idea but hate the slow, clunky website? We've all been there.
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gap: '16px',
-              }}
-            >
-              {[
-                'Websites that load slower than a snail on vacation',
-                'Generic templates that make your brand look like everyone else',
-                'AI tools that promise magic but deliver confusion',
-                '3D experiences that crash browsers instead of wowing users',
-                'Automation workflows that need constant babysitting',
-              ].map((problem, index) => (
-                <div
-                  key={index}
+              <div style={{ flex: 1, maxWidth: '480px' }}>
+                <h2
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: '12px 16px',
-                    borderRadius: '8px',
-                    background: 'rgba(239, 68, 68, 0.05)',
-                    border: '1px solid rgba(239, 68, 68, 0.1)',
+                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+                    fontWeight: 600,
+                    color: 'var(--text-main)',
+                    marginBottom: '16px',
+                    fontFamily: 'var(--font-heading)',
                   }}
                 >
-                  <AlertTriangle size={16} style={{ color: '#ef4444', flexShrink: 0 }} />
-                  <span
-                    style={{
-                      fontSize: '0.95rem',
-                      color: 'var(--text-muted)',
-                    }}
-                  >
-                    {problem}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bridge Section */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '80px',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              padding: '20px 32px',
-              borderRadius: '50px',
-              background: 'rgba(139, 92, 246, 0.1)',
-              border: '2px solid rgba(139, 92, 246, 0.3)',
-            }}
-          >
-            <ArrowRight size={24} style={{ color: 'var(--accent-purple)' }} />
-            <span
-              style={{
-                fontSize: '1.1rem',
-                fontWeight: 700,
-                color: 'var(--accent-purple)',
-              }}
-            >
-              Enter OneSolve
-            </span>
-            <ArrowRight size={24} style={{ color: 'var(--accent-purple)' }} />
-          </div>
-        </div>
-
-        {/* Solution Section */}
-        <div
-          style={{
-            maxWidth: '900px',
-            margin: '0 auto',
-          }}
-        >
-          <div
-            className="glass-card"
-            style={{
-              padding: '48px',
-              position: 'relative',
-              background: 'rgba(16, 185, 129, 0.05)',
-              border: '1px solid rgba(16, 185, 129, 0.2)',
-            }}
-          >
-            <div
-              style={{
-                position: 'absolute',
-                top: '24px',
-                right: '24px',
-                width: '60px',
-                height: '60px',
-                borderRadius: '50%',
-                background: 'rgba(16, 185, 129, 0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <CheckCircle size={28} style={{ color: '#10b981' }} />
-            </div>
-
-            <h3
-              style={{
-                fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                fontWeight: 700,
-                marginBottom: '20px',
-                color: 'var(--text-main)',
-              }}
-            >
-              We've got you covered
-            </h3>
-
-            <p
-              style={{
-                fontSize: '1.1rem',
-                color: 'var(--text-muted)',
-                lineHeight: 1.7,
-                marginBottom: '32px',
-              }}
-            >
-              Here's OneSolve — your full-stack digital partner that turns complex challenges into elegant solutions. Fast, beautiful, and actually fun to work with.
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gap: '16px',
-              }}
-            >
-              {[
-                'Lightning-fast web apps that load in the blink of an eye',
-                'Custom designs that make your brand unforgettable',
-                'AI solutions that work like magic, no PhD required',
-                '3D experiences that impress without breaking the web',
-                'Automation that runs while you sleep (literally)',
-              ].map((solution, index) => (
-                <div
-                  key={index}
+                  {card.heading}
+                </h2>
+                <p
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: '12px 16px',
-                    borderRadius: '8px',
-                    background: 'rgba(16, 185, 129, 0.08)',
-                    border: '1px solid rgba(16, 185, 129, 0.15)',
+                    color: 'var(--text-muted)',
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    whiteSpace: 'pre-line',
                   }}
                 >
-                  <CheckCircle size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span
-                    style={{
-                      fontSize: '0.95rem',
-                      color: 'var(--text-muted)',
-                    }}
-                  >
-                    {solution}
-                  </span>
-                </div>
-              ))}
+                  {card.body}
+                </p>
+              </div>
+              <IllustrationBlock emoji={card.emoji} tint={card.tint} />
             </div>
-
-            <div
-              style={{
-                marginTop: '32px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <a
-                href="#contact"
-                className="btn-primary"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                }}
-              >
-                <Rocket size={18} />
-                <span>Let's Build Something Amazing</span>
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .info-card { flex-direction: column !important; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,57 +1,51 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
-import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import SocialProof from './components/SocialProof';
 import ProblemSolution from './components/ProblemSolution';
-import AboutUs from './components/AboutUs';
+import ScrollingBanner from './components/ScrollingBanner';
+import MadeFor from './components/MadeFor';
 import Services from './components/Services';
-import ProductShowcase from './components/ProductShowcase';
-import FeatureList from './components/FeatureList';
-import InteractiveDemos from './components/InteractiveDemos';
-import Portfolio from './components/Portfolio';
-import TechArsenal from './components/TechArsenal';
-import WorkflowProcess from './components/WorkflowProcess';
-import Capabilities from './components/Capabilities';
 import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
-import StickyCTA from './components/StickyCTA';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [cursorEnabled, setCursorEnabled] = useState(true);
-  const [selectedServiceId, setSelectedServiceId] = useState(0);
-
   return (
-    <div style={{ position: 'relative', overflowX: 'hidden' }}>
-      {/* Custom Trailing Magnetic Cursor */}
-      <CustomCursor enabled={cursorEnabled} />
+    <div style={{ position: 'relative', overflowX: 'hidden', background: 'var(--bg-primary)' }}>
+      {/* Fixed Header Navigation */}
+      <Navbar />
 
-      {/* Fixed Header Navigation Bar */}
-      <Navbar cursorEnabled={cursorEnabled} setCursorEnabled={setCursorEnabled} />
-
-      {/* Main Content Sections */}
+      {/* Main Content */}
       <main>
-        <Hero onSelectService={setSelectedServiceId} />
+        {/* 1. Hero — full-screen glow orb + centered CTA */}
+        <Hero />
+
+        {/* 2. Social Proof — client logo marquee */}
         <SocialProof />
+
+        {/* 3. Problem / Solution — alternating tinted cards */}
         <ProblemSolution />
-        <AboutUs />
-        <Services selectedServiceId={selectedServiceId} setSelectedServiceId={setSelectedServiceId} />
-        <ProductShowcase />
-        <FeatureList />
-        <InteractiveDemos />
-        <Portfolio />
-        <TechArsenal />
-        <WorkflowProcess />
-        <Capabilities />
+
+        {/* 4. Scrolling banner — giant text ticker */}
+        <ScrollingBanner />
+
+        {/* 5. Made For — cycling heading */}
+        <MadeFor />
+
+        {/* 6. Services — bento grid with hover-reveal */}
+        <Services />
+
+        {/* 7. Testimonials — infinite horizontal marquee */}
         <Testimonials />
+
+        {/* 8. CTA Section */}
         <CTASection />
+
+        {/* 9. Contact Form */}
         <ContactSection />
       </main>
-
-      {/* Persistent Floating Bottom Consultation CTA */}
-      <StickyCTA />
 
       {/* Footer */}
       <Footer />

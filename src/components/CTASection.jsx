@@ -1,169 +1,151 @@
 import React from 'react';
-import { ArrowUpRight, Sparkles, MessageSquare, Rocket, Target } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function CTASection() {
   return (
     <section
+      id="cta"
       style={{
-        padding: '100px 0',
         position: 'relative',
+        background: 'var(--bg-primary)',
+        padding: '80px 24px 120px',
+        overflow: 'hidden',
         zIndex: 1,
-        background: 'var(--bg-secondary)',
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
-      {/* Gradient Background */}
+      {/* Card */}
       <div
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
-          pointerEvents: 'none',
+          position: 'relative',
+          maxWidth: '900px',
+          width: '100%',
+          borderRadius: '28px',
+          padding: 'clamp(40px, 6vw, 80px)',
+          background: 'rgba(30, 41, 59, 0.5)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          overflow: 'hidden',
+          textAlign: 'center',
         }}
-      />
-
-      <div className="container">
+      >
+        {/* Glow behind card */}
         <div
-          className="glass-card"
           style={{
-            padding: '80px 40px',
-            borderRadius: '32px',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-            background: 'rgba(26, 26, 36, 0.9)',
-            border: '2px solid rgba(139, 92, 246, 0.3)',
-            boxShadow: '0 12px 40px rgba(139, 92, 246, 0.2)',
+            position: 'absolute',
+            bottom: '-60px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: '300px',
+            background: 'radial-gradient(ellipse, rgba(99,102,241,0.25) 0%, transparent 70%)',
+            pointerEvents: 'none',
+            filter: 'blur(20px)',
           }}
-        >
-          {/* Decorative Elements */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              width: '100px',
-              height: '100px',
-              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)',
-              borderRadius: '50%',
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '20px',
-              left: '20px',
-              width: '80px',
-              height: '80px',
-              background: 'radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%)',
-              borderRadius: '50%',
-            }}
-          />
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '-40px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '400px',
+            height: '200px',
+            background: 'radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
 
-          <div className="badge-pill" style={{ marginBottom: '24px', position: 'relative', zIndex: 1 }}>
-            <Sparkles size={14} />
-            <span>START YOUR TRANSFORMATION</span>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div className="badge-pill" style={{ marginBottom: '20px', display: 'inline-flex' }}>
+            <Sparkles size={13} />
+            <span>Let's Build Together</span>
           </div>
 
           <h2
             style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4.2rem)',
-              fontWeight: 900,
-              marginBottom: '24px',
-              lineHeight: 1.1,
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontWeight: 700,
               color: 'var(--text-main)',
-              position: 'relative',
-              zIndex: 1,
+              marginBottom: '16px',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.15,
             }}
           >
-            Ready To Start <br />
-            <span className="gradient-text-purple">Your Project?</span>
+            Ready to upscale<br />your business?
           </h2>
 
           <p
             style={{
               color: 'var(--text-muted)',
-              fontSize: '1.15rem',
-              maxWidth: '650px',
-              margin: '0 auto 40px auto',
+              fontSize: '1.1rem',
+              marginBottom: '36px',
+              maxWidth: '500px',
+              margin: '0 auto 36px',
               lineHeight: 1.6,
-              position: 'relative',
-              zIndex: 1,
             }}
           >
-            Book a free 30-minute discovery call with our creative leads to discuss your vision, timeline, and custom 3D web features.
+            Let's turn your ideas into a stunning digital reality — AI, automation, and world-class design, all in one place.
           </p>
 
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px',
-              justifyContent: 'center',
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <a
               href="#contact"
-              className="btn-primary"
               style={{
-                padding: '18px 40px',
-                fontSize: '1.05rem',
-                background: 'var(--gradient-purple)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '14px 32px',
+                borderRadius: '50px',
+                background: 'rgba(99,102,241,0.2)',
+                border: '1px solid rgba(99,102,241,0.45)',
+                color: 'var(--text-main)',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 600,
+                fontSize: '1rem',
+                textDecoration: 'none',
+                transition: 'all 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(99,102,241,0.35)';
+                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.7)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(99,102,241,0.2)';
+                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.45)';
               }}
             >
-              <Rocket size={20} />
-              <span>Book Discovery Call</span>
-              <ArrowUpRight size={20} />
+              Get Started <ArrowRight size={16} />
             </a>
             <a
-              href="mailto:hello@onesolve.agency"
-              className="btn-secondary"
-              style={{ padding: '18px 36px', fontSize: '1rem' }}
+              href="#portfolio"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '14px 32px',
+                borderRadius: '50px',
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.1)',
+                color: 'var(--text-muted)',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 600,
+                fontSize: '1rem',
+                textDecoration: 'none',
+                transition: 'all 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                e.currentTarget.style.color = 'var(--text-main)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                e.currentTarget.style.color = 'var(--text-muted)';
+              }}
             >
-              <MessageSquare size={18} />
-              <span>Email Us Directly</span>
+              View Our Work
             </a>
-          </div>
-
-          {/* Trust Indicators */}
-          <div
-            style={{
-              marginTop: '40px',
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '32px',
-              justifyContent: 'center',
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            {[
-              { icon: Target, text: 'Free Consultation' },
-              { icon: Rocket, text: 'Fast Response Time' },
-              { icon: Sparkles, text: 'No Obligation' },
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    color: 'var(--text-muted)',
-                    fontSize: '0.9rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  <Icon size={16} style={{ color: 'var(--accent-purple)' }} />
-                  <span>{item.text}</span>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>

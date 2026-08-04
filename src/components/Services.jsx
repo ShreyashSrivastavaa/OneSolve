@@ -1,343 +1,249 @@
 import React, { useState } from 'react';
 import {
-  Monitor,
-  Bot,
-  BrainCircuit,
-  Layout,
-  Box,
-  Sparkles,
-  Cloud,
-  Cpu,
-  Workflow,
-  TrendingUp,
-  CheckCircle,
-  ArrowRight,
-  Layers,
-  X,
+  Monitor, Bot, BrainCircuit, Layout, Box, Sparkles,
+  Cloud, Cpu, Workflow, TrendingUp, ArrowRight, X, CheckCircle,
+  Gauge, Palette, Puzzle, Infinity, MonitorSpeaker, Group,
 } from 'lucide-react';
+
+const services = [
+  {
+    id: 0, icon: Monitor, title: 'Web Design & Development',
+    desc: 'Custom web apps, SaaS platforms, and e-commerce storefronts built for performance and beauty.',
+    accent: '#6366f1',
+    tags: ['React', 'Next.js', 'TypeScript'],
+    count: '45+ Projects',
+    features: [
+      'Custom React, Next.js & Vite Web Applications',
+      'SaaS Platforms & Enterprise E-Commerce',
+      'Lighthouse 95+ Performance Tuning',
+      'Mobile-First Responsive Layouts',
+      'Headless CMS Integration (Sanity, Contentful)',
+    ],
+    span: 'col-1-2 row-1-2',
+  },
+  {
+    id: 1, icon: Bot, title: 'AI Solutions & Automation',
+    desc: 'Harness LLMs, chatbots, and intelligent agents to automate workflows and delight users.',
+    accent: '#818cf8',
+    tags: ['GPT-4o', 'Claude', 'LangChain'],
+    count: '40+ Systems',
+    features: [
+      'Custom LLM Integration (OpenAI GPT-4o, Claude)',
+      'Intelligent Chatbots & Conversational AI',
+      'Automated Workflow Triggers & Webhooks',
+      'Custom Fine-Tuning & Model Evaluation',
+      'Enterprise Security & Guardrails',
+    ],
+    span: 'col-2-3 row-1-2',
+  },
+  {
+    id: 2, icon: BrainCircuit, title: 'Agentic AI & RAG',
+    desc: 'Multi-agent systems and retrieval-augmented generation that interact with your enterprise data.',
+    accent: '#a78bfa',
+    tags: ['RAG', 'MCP', 'Vector DB'],
+    count: '25+ Deployed',
+    features: [
+      'Autonomous Multi-Agent Swarms',
+      'RAG on Enterprise Data',
+      'MCP Server & Tool Development',
+      'Vector Database Architecture',
+      'Context-Aware AI Assistants',
+    ],
+    span: 'col-3-4 row-1-3',
+  },
+  {
+    id: 3, icon: Layout, title: 'UI/UX Design',
+    desc: 'Research-driven, accessible interfaces with Figma design systems and interactive prototypes.',
+    accent: '#38bdf8',
+    tags: ['Figma', 'Design System', 'WCAG'],
+    count: '50+ UI Systems',
+    features: [
+      'Figma Component Design Systems',
+      'User Journey Mapping',
+      'High-Fidelity Prototypes',
+      'WCAG 2.1 AA Accessibility',
+      'Design-to-Code Handoff',
+    ],
+    span: 'col-1-2 row-2-3',
+  },
+  {
+    id: 4, icon: Box, title: '3D Web Experiences',
+    desc: 'Immersive Three.js and React Three Fiber 3D scenes, shaders, and Blender-optimized assets.',
+    accent: '#f59e0b',
+    tags: ['Three.js', 'WebGL', 'GLSL'],
+    count: '30+ Scenes',
+    features: [
+      'Three.js & React Three Fiber Viewports',
+      'Custom GLSL Shader Effects',
+      'Blender 3D Model Optimization',
+      'Scroll-Triggered GSAP Timelines',
+      'WebGL Fallbacks & Touch Optimization',
+    ],
+    span: 'col-2-3 row-2-3',
+  },
+  {
+    id: 5, icon: Cloud, title: 'Cloud & DevOps',
+    desc: 'Cloud-native infrastructure, CI/CD pipelines, Docker, and 24/7 monitoring.',
+    accent: '#06b6d4',
+    tags: ['AWS', 'Docker', 'CI/CD'],
+    count: '25+ Migrations',
+    features: [
+      'Multi-Cloud Deployment (AWS, GCP, Vercel)',
+      'Docker & Kubernetes Orchestration',
+      'GitHub Actions CI/CD',
+      'Infrastructure as Code (Terraform)',
+      '24/7 Monitoring & Auto-Scaling',
+    ],
+    span: 'col-1-2 row-3-4',
+  },
+  {
+    id: 6, icon: Workflow, title: 'Business Automation',
+    desc: 'n8n, Make, and Zapier workflows that eliminate manual tasks and connect your entire stack.',
+    accent: '#4ade80',
+    tags: ['n8n', 'Make', 'Zapier'],
+    count: '60+ Workflows',
+    features: [
+      'n8n, Make & Zapier Pipelines',
+      'Automated Lead Qualification',
+      'E-Commerce Order Automation',
+      'Automated Reporting & Invoicing',
+      'Custom Webhooks & Scripting',
+    ],
+    span: 'col-2-3 row-3-4',
+  },
+  {
+    id: 7, icon: TrendingUp, title: 'Maintenance & Growth',
+    desc: 'Ongoing support, security updates, technical SEO, and performance optimization.',
+    accent: '#fb923c',
+    tags: ['SEO', 'Security', 'SLA'],
+    count: '40+ Retainers',
+    features: [
+      '24/7 Server Health & Uptime Monitoring',
+      'Security Patches & Vulnerability Scans',
+      'Technical SEO & CRO',
+      'Monthly Feature Iterations',
+      'Priority SLA Support',
+    ],
+    span: 'col-3-4 row-3-4',
+  },
+];
 
 export default function Services() {
   const [activeService, setActiveService] = useState(null);
-
-  const services = [
-    {
-      id: 0,
-      title: 'Web Design & Development',
-      icon: Monitor,
-      accent: '#3b82f6',
-      tagline: 'Modern websites, web applications, SaaS platforms, and e-commerce flagships.',
-      description:
-        'We engineer bespoke web applications and platforms that combine stunning aesthetic standards with rock-solid performance, SEO architecture, and interactive micro-animations.',
-      features: [
-        'Custom React, Next.js & Vite Web Applications',
-        'SaaS Platforms & Enterprise E-Commerce Storefronts',
-        'Lighthouse 95+ Core Web Vitals Performance Tuning',
-        'Mobile-First Responsive Layouts & Touch Optimization',
-        'Headless CMS & API Integration (Sanity, Contentful)',
-      ],
-      tags: ['React', 'Next.js', 'Vite', 'Tailwind', 'TypeScript'],
-      projectCount: '45+ Delivered',
-    },
-    {
-      id: 1,
-      title: 'AI Solutions & Automation',
-      icon: Bot,
-      accent: '#8b5cf6',
-      tagline: 'Custom AI applications, chatbots, intelligent agents, and workflow automation.',
-      description:
-        'Harness cutting-edge large language models and predictive AI to automate complex business workflows and deliver hyper-personalized user experiences.',
-      features: [
-        'Custom LLM Integration (OpenAI GPT-4o, Claude 3.5, LLaMA)',
-        'Intelligent Chatbots & Conversational Assistants',
-        'Automated Workflow Triggers & Webhook Dispatches',
-        'Custom Fine-Tuning & Model Evaluation Pipelines',
-        'Enterprise Security & Guardrails Protocol',
-      ],
-      tags: ['OpenAI', 'Claude 3.5', 'Python', 'LangChain', 'Fine-Tuning'],
-      projectCount: '40+ Deployed',
-    },
-    {
-      id: 2,
-      title: 'Agentic AI, RAG & MCP',
-      icon: BrainCircuit,
-      accent: '#ec4899',
-      tagline: 'Autonomous AI agents, RAG knowledge retrieval, MCP tools, and enterprise integrations.',
-      description:
-        'Build multi-agent autonomous systems powered by Retrieval-Augmented Generation (RAG) and Model Context Protocol (MCP) to interact directly with internal enterprise databases.',
-      features: [
-        'Autonomous Multi-Agent Swarms & Decision Workflows',
-        'Retrieval-Augmented Generation (RAG) on Enterprise Data',
-        'MCP (Model Context Protocol) Server & Tool Development',
-        'Vector Database Architecture (Pinecone, Qdrant, Chroma)',
-        'Context-Aware AI Knowledge Assistants & Search',
-      ],
-      tags: ['RAG', 'MCP', 'LangChain', 'LlamaIndex', 'Vector DB'],
-      projectCount: '25+ Enterprise Systems',
-    },
-    {
-      id: 3,
-      title: 'UI/UX Design',
-      icon: Layout,
-      accent: '#06b6d4',
-      tagline: 'User research, wireframes, design systems, and interactive prototypes.',
-      description:
-        'We design intuitive, accessible user interfaces backed by user research and rapid prototyping, ensuring your users enjoy effortless interaction flow.',
-      features: [
-        'Figma Component Design Systems & Design Tokens',
-        'User Journey Mapping & Information Architecture',
-        'High-Fidelity Clickable Interactive Prototypes',
-        'Accessibility (WCAG 2.1 AA) Compliance Audits',
-        'Design-to-Code Handoff & Developer Specs',
-      ],
-      tags: ['Figma', 'UI/UX', 'Design System', 'Wireframing'],
-      projectCount: '50+ UI Systems',
-    },
-    {
-      id: 4,
-      title: '3D Web Experiences',
-      icon: Box,
-      accent: '#f59e0b',
-      tagline: 'Interactive 3D WebGL scenes, product configurators, and spatial canvas elements.',
-      description:
-        'Engage visitors with immersive, real-time 3D canvas viewports powered by Three.js, React Three Fiber, GLSL shaders, and Blender 3D assets.',
-      features: [
-        'Three.js & React Three Fiber 3D Viewports',
-        'Custom GLSL Fragment & Vertex Shader Effects',
-        'Low-Poly Blender 3D Model Optimization',
-        'Scroll-Triggered GSAP 3D Camera Timelines',
-        'WebGL Fallbacks & Touch Optimization',
-      ],
-      tags: ['Three.js', 'R3F', 'Blender', 'WebGL', 'GLSL'],
-      projectCount: '30+ 3D Scenes',
-    },
-    {
-      id: 5,
-      title: 'Brand Identity & Strategy',
-      icon: Sparkles,
-      accent: '#a855f7',
-      tagline: 'Morphing geometric logos, brand guidelines, typography systems, and digital strategy.',
-      description:
-        'Forge an unmistakable visual identity that resonates across digital platforms, print touchpoints, and spatial media.',
-      features: [
-        'Visual Identity Systems & Brand Guidelines',
-        'Custom Typography & Vector Logo Suite',
-        'Digital Strategy & Market Positioning Scoping',
-        'Social Media Kit & Motion Graphics Templates',
-        'Brand Messaging & Verbal Voice Architecture',
-      ],
-      tags: ['Branding', 'Typography', 'Logo Design', 'Strategy'],
-      projectCount: '35+ Brands',
-    },
-    {
-      id: 6,
-      title: 'Cloud & DevOps',
-      icon: Cloud,
-      accent: '#06b6d4',
-      tagline: 'Deployment, CI/CD, Docker, cloud infrastructure, monitoring, and scaling.',
-      description:
-        'Cloud-native infrastructure configuration and DevOps pipelines that ensure maximum reliability, security, and effortless horizontal scaling.',
-      features: [
-        'Multi-Cloud Deployment (AWS, GCP, Vercel, Azure)',
-        'Containerization & Kubernetes Orchestration (Docker)',
-        'Automated CI/CD Pipelines (GitHub Actions)',
-        'Infrastructure as Code (Terraform, CloudFormation)',
-        '24/7 Monitoring, Uptime Alerting & Auto-Scaling',
-      ],
-      tags: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'CI/CD'],
-      projectCount: '25+ Migrations',
-    },
-    {
-      id: 7,
-      title: 'API Development & Integration',
-      icon: Cpu,
-      accent: '#8b5cf6',
-      tagline: 'REST APIs, GraphQL, third-party integrations, payment gateways, and custom backend services.',
-      description:
-        'Connect disparate software systems seamlessly with robust, scalable API architectures and real-time data sync channels.',
-      features: [
-        'Custom RESTful & GraphQL API Architecture',
-        'Payment Gateway Integrations (Stripe, PayPal, Square)',
-        'Third-Party Service Sync (Salesforce, HubSpot, Slack)',
-        'Real-Time WebSockets & Event-Driven Systems',
-        'Enterprise Security & OAuth2 Authentication',
-      ],
-      tags: ['GraphQL', 'REST', 'Node.js', 'Python', 'OAuth2'],
-      projectCount: '30+ Integrated',
-    },
-    {
-      id: 8,
-      title: 'Business Process Automation',
-      icon: Workflow,
-      accent: '#f59e0b',
-      tagline: 'CRM automation, email workflows, internal tools, and automation using n8n, Make, and Zapier.',
-      description:
-        'Eliminate repetitive manual tasks by creating resilient visual workflow pipelines that connect CRMs, email engines, and databases automatically.',
-      features: [
-        'n8n, Make & Zapier Self-Hosted Automation Engines',
-        'Automated Lead Qualification & CRM Sync (HubSpot, Salesforce)',
-        'E-Commerce Order & Inventory Automation',
-        'Automated Reporting & Financial Invoicing Workflows',
-        'Custom Webhooks & Scripting Nodes',
-      ],
-      tags: ['n8n', 'Make', 'Zapier', 'Webhooks', 'Python'],
-      projectCount: '60+ Workflows',
-    },
-    {
-      id: 9,
-      title: 'Maintenance & Growth',
-      icon: TrendingUp,
-      accent: '#10b981',
-      tagline: 'Ongoing support, security updates, performance optimization, SEO, and feature enhancements.',
-      description:
-        'Keep your digital assets performing at peak speed with 24/7 uptime monitoring, security audits, technical SEO enhancements, and feature iterations.',
-      features: [
-        '24/7 Server Health & Uptime Monitoring',
-        'Security Patches & Vulnerability Scans',
-        'Technical SEO & Conversion Rate Optimization (CRO)',
-        'Monthly Feature Iterations & Code Updates',
-        'Priority SLA Support & Emergency Helpdesk',
-      ],
-      tags: ['SEO', 'Uptime', 'Security', 'CRO', 'SLA Support'],
-      projectCount: '40+ Retainer Clients',
-    },
-  ];
 
   return (
     <section
       id="services"
       className="section-padding"
-      style={{ position: 'relative', zIndex: 1, background: 'var(--bg-secondary)' }}
+      style={{ position: 'relative', zIndex: 1, background: 'var(--bg-primary)' }}
     >
       <div className="container">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <div className="badge-pill" style={{ marginBottom: '16px' }}>
-            <Layers size={14} />
-            <span>OUR DISCIPLINES</span>
+            <Sparkles size={13} />
+            <span>Our Services</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 800, marginBottom: '20px', color: 'var(--text-main)' }}>
-            Our <span className="gradient-text-purple">Services</span>
+          <h2 className="section-heading" style={{ marginBottom: '16px' }}>
+            Meet our capabilities.
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6 }}>
-            We deliver full-spectrum digital engineering capabilities focused on aesthetic elegance, high velocity, and scalable AI intelligence.
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '500px', margin: '0 auto' }}>
+            Full-spectrum digital engineering — from pixel-perfect design to autonomous AI.
           </p>
         </div>
 
-        {/* 2-Column Minimalist Service Cards Grid */}
+        {/* Bento Grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: '32px',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridAutoRows: '22rem',
+            gap: '16px',
           }}
+          className="services-bento"
         >
           {services.map((srv) => {
             const Icon = srv.icon;
-
             return (
               <div
                 key={srv.id}
+                className="bento-card"
+                style={{ cursor: 'pointer' }}
                 onClick={() => setActiveService(srv)}
-                className="glass-card"
-                style={{
-                  padding: '36px',
-                  borderRadius: '24px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  background: 'rgba(26, 26, 36, 0.8)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                }}
               >
-                {/* Top Accent Line */}
+                {/* Card Content */}
                 <div
+                  className="card-content"
                   style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: srv.accent,
+                    padding: '28px',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
                   }}
-                />
-
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-                    <div
-                      style={{
-                        width: '52px',
-                        height: '52px',
-                        borderRadius: '14px',
-                        background: `${srv.accent}12`,
-                        border: `1px solid ${srv.accent}30`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: srv.accent,
-                      }}
-                    >
-                      <Icon size={26} />
+                >
+                  <div>
+                    <div className="feature-icon" style={{ marginBottom: '16px', color: srv.accent, borderColor: `${srv.accent}30`, background: `${srv.accent}12` }}>
+                      <Icon size={22} />
                     </div>
-                    <span
+                    <h3
                       style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        color: srv.accent,
-                        background: `${srv.accent}12`,
-                        padding: '4px 12px',
-                        borderRadius: '20px',
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '1.15rem',
+                        fontWeight: 600,
+                        color: 'var(--text-main)',
+                        marginBottom: '8px',
                       }}
                     >
-                      {srv.projectCount}
-                    </span>
+                      {srv.title}
+                    </h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                      {srv.desc}
+                    </p>
                   </div>
 
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '12px' }}>
-                    {srv.title}
-                  </h3>
-
-                  <p style={{ fontSize: '0.98rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
-                    {srv.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '16px' }}>
                     {srv.tags.map((tag) => (
                       <span
                         key={tag}
                         style={{
-                          fontSize: '0.78rem',
-                          padding: '4px 12px',
+                          fontSize: '0.74rem',
+                          padding: '3px 10px',
                           borderRadius: '20px',
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          color: 'var(--text-muted)',
+                          background: 'rgba(255,255,255,0.05)',
+                          color: 'var(--text-dim)',
+                          border: '1px solid rgba(255,255,255,0.07)',
                           fontWeight: 500,
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
                         }}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
+                </div>
 
-                  <div
+                {/* Hover reveal */}
+                <div className="card-hover-reveal" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.95), transparent)' }}>
+                  <a
+                    href="#contact"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '8px',
-                      fontSize: '0.9rem',
-                      fontWeight: 700,
-                      color: srv.accent,
+                      gap: '6px',
+                      color: 'var(--text-muted)',
+                      fontSize: '0.88rem',
+                      fontWeight: 500,
+                      textDecoration: 'none',
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      transition: 'color 0.2s',
                     }}
+                    onClick={(e) => { e.stopPropagation(); setActiveService(srv); }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-main)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
                   >
-                    <span>Explore Discipline</span>
-                    <ArrowRight size={16} />
-                  </div>
+                    Learn more <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
             );
@@ -345,18 +251,15 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Service Detail Modal */}
+      {/* Detail Modal */}
       {activeService && (
         <div
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            inset: 0,
             zIndex: 9999,
-            background: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(12px)',
+            background: 'rgba(0,0,0,0.75)',
+            backdropFilter: 'blur(16px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -365,87 +268,97 @@ export default function Services() {
           onClick={() => setActiveService(null)}
         >
           <div
-            className="glass-card"
             style={{
+              background: 'rgba(15,23,42,0.96)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
               padding: '40px',
-              maxWidth: '650px',
+              maxWidth: '580px',
               width: '100%',
-              borderRadius: '24px',
-              background: 'rgba(26, 26, 36, 0.95)',
               position: 'relative',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 24px 60px rgba(0,0,0,0.6)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveService(null)}
               style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: 'none',
-                borderRadius: '50%',
-                width: '36px',
-                height: '36px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
+                position: 'absolute', top: '20px', right: '20px',
+                background: 'rgba(255,255,255,0.06)', border: 'none',
+                borderRadius: '50%', width: '34px', height: '34px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', color: 'var(--text-muted)',
               }}
             >
-              <X size={20} color="#ffffff" />
+              <X size={16} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
               <div
                 style={{
-                  padding: '14px',
-                  borderRadius: '16px',
-                  background: `${activeService.accent}25`,
+                  width: '52px', height: '52px', borderRadius: '12px',
+                  background: `${activeService.accent}18`,
+                  border: `1px solid ${activeService.accent}35`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: activeService.accent,
                 }}
               >
-                {React.createElement(activeService.icon, { size: 32 })}
+                {React.createElement(activeService.icon, { size: 26 })}
               </div>
               <div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: activeService.accent }}>
-                  {activeService.projectCount}
+                <span style={{ fontSize: '0.78rem', fontWeight: 700, color: activeService.accent, display: 'block', marginBottom: '2px' }}>
+                  {activeService.count}
                 </span>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>{activeService.title}</h3>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                  {activeService.title}
+                </h3>
               </div>
             </div>
 
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
-              {activeService.description}
+            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '24px' }}>
+              {activeService.desc}
             </p>
 
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '14px' }}>
-              Key Deliverables & Capabilities:
+            <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '12px' }}>
+              Key Deliverables:
             </h4>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
-              {activeService.features.map((feat, i) => (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+              {activeService.features.map((f, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <CheckCircle size={18} color={activeService.accent} />
-                  <span style={{ fontSize: '0.92rem', color: 'var(--text-muted)' }}>{feat}</span>
+                  <CheckCircle size={16} color={activeService.accent} style={{ flexShrink: 0 }} />
+                  <span style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>{f}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '14px' }}>
-              <a
-                href="#contact"
-                onClick={() => setActiveService(null)}
-                className="btn-primary"
-                style={{ background: activeService.accent, flex: 1, justifyContent: 'center' }}
-              >
-                Inquire Project
-              </a>
-            </div>
+            <a
+              href="#contact"
+              onClick={() => setActiveService(null)}
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                padding: '12px 24px', borderRadius: '50px', textDecoration: 'none',
+                background: `${activeService.accent}20`,
+                border: `1px solid ${activeService.accent}40`,
+                color: 'var(--text-main)', fontWeight: 600, fontSize: '0.95rem',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              Start this project <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       )}
+
+      <style>{`
+        .services-bento { grid-auto-rows: 22rem; }
+        @media (max-width: 900px) {
+          .services-bento { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
+          .bento-card { min-height: 260px; }
+        }
+        @media (min-width: 901px) and (max-width: 1200px) {
+          .services-bento { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
     </section>
   );
 }

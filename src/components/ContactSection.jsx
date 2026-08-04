@@ -61,7 +61,7 @@ export default function ContactSection() {
     budgetValue >= 100000 ? '$100,000+' : `$${budgetValue.toLocaleString()}`;
 
   return (
-    <section id="contact" className="section-padding" style={{ position: 'relative', zIndex: 1, background: '#fafafa' }}>
+    <section id="contact" className="section-padding" style={{ position: 'relative', zIndex: 1, background: 'var(--bg-primary)' }}>
       <div className="container">
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 60px auto' }}>
@@ -82,13 +82,13 @@ export default function ContactSection() {
           {/* Left Form */}
           <div style={{ gridColumn: 'span 7' }} className="contact-form-col">
             <div
-              className="glass-card"
               style={{
                 padding: '40px',
                 borderRadius: '24px',
-                background: '#ffffff',
-                border: '1px solid rgba(0, 0, 0, 0.06)',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+                background: 'rgba(30,41,59,0.6)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
+                backdropFilter: 'blur(12px)',
               }}
             >
               {submitted ? (
@@ -98,9 +98,9 @@ export default function ContactSection() {
                       width: '70px',
                       height: '70px',
                       borderRadius: '50%',
-                      background: 'rgba(139, 92, 246, 0.1)',
-                      border: '2px solid var(--accent-purple)',
-                      color: 'var(--accent-purple)',
+                      background: 'rgba(99, 102, 241, 0.15)',
+                      border: '2px solid rgba(99,102,241,0.5)',
+                      color: '#818cf8',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -109,11 +109,11 @@ export default function ContactSection() {
                   >
                     <CheckCircle2 size={36} />
                   </div>
-                  <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '12px' }}>
+                  <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '12px' }}>
                     Proposal Request Received!
                   </h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto 24px auto' }}>
-                    Thank you, <span style={{ color: '#1a1a1a', fontWeight: 700 }}>{formData.name}</span>. Our lead architect will review your scope (<span style={{ color: 'var(--accent-purple)', fontWeight: 700 }}>{formattedBudget}</span>) and respond within 24 hours.
+                    Thank you, <span style={{ color: '#fff', fontWeight: 700 }}>{formData.name}</span>. Our lead architect will review your scope (<span style={{ color: '#818cf8', fontWeight: 700 }}>{formattedBudget}</span>) and respond within 24 hours.
                   </p>
                   <button onClick={() => setSubmitted(false)} className="btn-secondary">
                     Send Another Request
@@ -124,7 +124,7 @@ export default function ContactSection() {
                   {/* Name & Company */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-row">
                     <div>
-                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '8px' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '8px' }}>
                         Full Name *
                       </label>
                       <input
@@ -137,17 +137,18 @@ export default function ContactSection() {
                           width: '100%',
                           padding: '14px 18px',
                           borderRadius: '12px',
-                          background: '#f4f4f6',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
-                          color: '#1a1a1a',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: 'var(--text-main)',
                           outline: 'none',
                           fontSize: '0.95rem',
+                          fontFamily: 'var(--font-body)',
                         }}
                       />
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '8px' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '8px' }}>
                         Company Name
                       </label>
                       <input
@@ -159,11 +160,12 @@ export default function ContactSection() {
                           width: '100%',
                           padding: '14px 18px',
                           borderRadius: '12px',
-                          background: '#f4f4f6',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
-                          color: '#1a1a1a',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: 'var(--text-main)',
                           outline: 'none',
                           fontSize: '0.95rem',
+                          fontFamily: 'var(--font-body)',
                         }}
                       />
                     </div>
@@ -172,7 +174,7 @@ export default function ContactSection() {
                   {/* Email & Phone */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="form-row">
                     <div>
-                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '8px' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '8px' }}>
                         Email Address *
                       </label>
                       <input
@@ -185,9 +187,9 @@ export default function ContactSection() {
                           width: '100%',
                           padding: '14px 18px',
                           borderRadius: '12px',
-                          background: '#f4f4f6',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
-                          color: '#1a1a1a',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: 'var(--text-main)',
                           outline: 'none',
                           fontSize: '0.95rem',
                         }}
@@ -195,7 +197,7 @@ export default function ContactSection() {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '8px' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '8px' }}>
                         Phone / WhatsApp
                       </label>
                       <input
@@ -207,9 +209,9 @@ export default function ContactSection() {
                           width: '100%',
                           padding: '14px 18px',
                           borderRadius: '12px',
-                          background: '#f4f4f6',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
-                          color: '#1a1a1a',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: 'var(--text-main)',
                           outline: 'none',
                           fontSize: '0.95rem',
                         }}
@@ -219,7 +221,7 @@ export default function ContactSection() {
 
                   {/* Multi-Select Services Pills */}
                   <div>
-                    <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '10px' }}>
+                    <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '10px' }}>
                       Services Interested In:
                     </label>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
@@ -237,9 +239,9 @@ export default function ContactSection() {
                               fontSize: '0.8rem',
                               fontWeight: 600,
                               border: '1px solid',
-                              borderColor: isSelected ? 'var(--accent-purple)' : 'rgba(0, 0, 0, 0.08)',
-                              background: isSelected ? 'var(--accent-purple)' : '#f4f4f6',
-                              color: isSelected ? '#ffffff' : '#1a1a1a',
+                              borderColor: isSelected ? 'rgba(99,102,241,0.6)' : 'rgba(255,255,255,0.08)',
+                              background: isSelected ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.04)',
+                              color: isSelected ? '#c7d2fe' : 'var(--text-muted)',
                               cursor: 'pointer',
                               transition: 'var(--transition-smooth)',
                             }}
@@ -254,10 +256,10 @@ export default function ContactSection() {
                   {/* Interactive Budget Range Slider */}
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a' }}>
+                      <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)' }}>
                         Project Budget Range:
                       </label>
-                      <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-purple)' }}>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#818cf8' }}>
                         {formattedBudget}
                       </span>
                     </div>
@@ -280,7 +282,7 @@ export default function ContactSection() {
 
                   {/* Project Details */}
                   <div>
-                    <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a', display: 'block', marginBottom: '8px' }}>
+                    <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', display: 'block', marginBottom: '8px' }}>
                       Project Details & Objectives *
                     </label>
                     <textarea
@@ -289,17 +291,18 @@ export default function ContactSection() {
                       placeholder="Describe your vision, target launch date, and key features..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '14px 18px',
-                        borderRadius: '12px',
-                        background: '#f4f4f6',
-                        border: '1px solid rgba(0, 0, 0, 0.08)',
-                        color: '#1a1a1a',
-                        outline: 'none',
-                        fontSize: '0.95rem',
-                        resize: 'vertical',
-                      }}
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: '12px',
+                          background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: 'var(--text-main)',
+                          outline: 'none',
+                          fontSize: '0.95rem',
+                          resize: 'vertical',
+                          fontFamily: 'var(--font-body)',
+                        }}
                     />
                   </div>
 
@@ -317,18 +320,18 @@ export default function ContactSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {/* Call Booking Card */}
               <div
-                className="glass-card"
-                style={{
+                  style={{
                   padding: '30px',
                   borderRadius: '20px',
-                  background: '#ffffff',
-                  border: '1px solid rgba(139, 92, 246, 0.2)',
-                  boxShadow: '0 8px 30px rgba(139, 92, 246, 0.08)',
+                  background: 'rgba(30,41,59,0.6)',
+                  border: '1px solid rgba(99,102,241,0.2)',
+                  boxShadow: '0 8px 30px rgba(99,102,241,0.1)',
+                  backdropFilter: 'blur(12px)',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
                   <Calendar size={24} color="var(--accent-purple)" />
-                  <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1a1a1a' }}>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-main)' }}>
                     Book a 15-Min Discovery Call
                   </h4>
                 </div>
@@ -346,12 +349,12 @@ export default function ContactSection() {
               </div>
 
               {/* Direct Email Card */}
-              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px', background: '#ffffff', border: '1px solid rgba(0, 0, 0, 0.06)' }}>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '12px' }}>
+              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px', background: 'rgba(30,41,59,0.6)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '12px' }}>
                   Direct Email Contact
                 </h4>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderRadius: '12px', background: '#f4f4f6', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--accent-purple)', fontWeight: 700 }}>hello@onesolve.agency</span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderRadius: '12px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <span style={{ fontSize: '0.9rem', color: '#818cf8', fontWeight: 700 }}>hello@upscaletechsolutions.com</span>
                   <button onClick={copyEmail} className="btn-secondary" style={{ padding: '6px 12px', fontSize: '0.75rem' }}>
                     {copiedEmail ? <CheckCircle2 size={14} /> : <Copy size={14} />}
                     <span>{copiedEmail ? 'Copied' : 'Copy'}</span>
@@ -360,8 +363,8 @@ export default function ContactSection() {
               </div>
 
               {/* Response Time Guarantee */}
-              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px', background: '#ffffff', border: '1px solid rgba(0, 0, 0, 0.06)' }}>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '14px' }}>
+              <div className="glass-card" style={{ padding: '24px', borderRadius: '20px', background: 'rgba(30,41,59,0.6)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '14px' }}>
                   Response Guarantee
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: 'var(--text-muted)', fontSize: '0.88rem' }}>
@@ -400,19 +403,18 @@ export default function ContactSection() {
           onClick={() => setShowCalendlyModal(false)}
         >
           <div
-            className="glass-card"
-            style={{ padding: '36px', maxWidth: '500px', width: '100%', borderRadius: '24px', textAlign: 'center', background: '#ffffff' }}
+            style={{ padding: '36px', maxWidth: '500px', width: '100%', borderRadius: '24px', textAlign: 'center', background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.08)' }}
             onClick={(e) => e.stopPropagation()}
           >
             <Calendar size={48} color="var(--accent-purple)" style={{ margin: '0 auto 16px auto' }} />
-            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '10px' }}>
               Schedule 15-Min Discovery Call
             </h3>
             <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '24px' }}>
               Select a time slot directly on our official calendar to speak directly with Shreyash Srivastava & the OneSolve engineering team.
             </p>
-            <div style={{ padding: '20px', background: '#f4f4f6', borderRadius: '16px', marginBottom: '24px', border: '1px solid rgba(0,0,0,0.08)' }}>
-              <div style={{ fontWeight: 700, color: 'var(--accent-purple)' }}>Available Slots Today & Tomorrow</div>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', borderRadius: '16px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ fontWeight: 700, color: '#818cf8' }}>Available Slots Today & Tomorrow</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginTop: '4px' }}>10:00 AM • 2:30 PM • 4:00 PM PST</div>
             </div>
             <div style={{ display: 'flex', gap: '12px' }}>
