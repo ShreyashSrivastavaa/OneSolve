@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowUp, Send, CheckCircle2, Github, Twitter, Linkedin, Globe } from 'lucide-react';
+import { Sparkles, ArrowUp, Send, CheckCircle2, Code2, MessageCircle, Briefcase, Globe } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -22,10 +22,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Globe, href: '#', label: 'Website' },
+    { icon: Code2,         href: '#', label: 'GitHub' },
+    { icon: MessageCircle, href: '#', label: 'Twitter' },
+    { icon: Briefcase,     href: '#', label: 'LinkedIn' },
+    { icon: Globe,         href: '#', label: 'Website' },
   ];
 
   return (
