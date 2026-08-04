@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SocialProof from './components/SocialProof';
@@ -10,10 +10,16 @@ import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import SplashScreen from './components/SplashScreen';
 
 export default function App() {
+  const [splashDone, setSplashDone] = useState(false);
+  const handleSplashFinished = useCallback(() => setSplashDone(true), []);
+
   return (
     <div style={{ position: 'relative', overflowX: 'hidden', background: 'var(--bg-primary)' }}>
+      {/* Intro splash screen */}
+      {!splashDone && <SplashScreen onFinished={handleSplashFinished} />}
       {/* Fixed Header Navigation */}
       <Navbar />
 
