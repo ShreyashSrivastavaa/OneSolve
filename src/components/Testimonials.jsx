@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, MessageSquareQuote, Quote, Zap, Twitter, Heart } from 'lucide-react';
+import { Star, MessageSquareQuote, Quote, Zap, Heart, AtSign } from 'lucide-react';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,7 +93,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Twitter-style Testimonials Grid */}
+        {/* Social-style Testimonials Grid */}
         <div
           style={{
             display: 'grid',
@@ -118,7 +118,7 @@ export default function Testimonials() {
               }}
               onClick={() => setCurrentIndex(index)}
             >
-              {/* Twitter-style Header */}
+              {/* Social-style Header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                 <div
                   style={{
@@ -140,7 +140,7 @@ export default function Testimonials() {
                     <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>
                       {review.author}
                     </h4>
-                    <Twitter size={14} style={{ color: 'var(--accent-purple)' }} />
+                    <AtSign size={14} style={{ color: 'var(--accent-purple)' }} />
                   </div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
                     {review.handle}
